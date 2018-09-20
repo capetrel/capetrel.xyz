@@ -14,7 +14,7 @@ class ContactModule extends Module
 
     public function __construct(Router $router, RendererInterface $renderer)
     {
-        $renderer->addPath('contact', __DIR__ .'/views');
+        $renderer->addPath('contact', __DIR__ . DIRECTORY_SEPARATOR . 'views');
         $router->get('/contact', ContactAction::class, 'contact');
         $router->post('/contact', ContactAction::class);
     }

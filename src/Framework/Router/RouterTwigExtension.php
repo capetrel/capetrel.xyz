@@ -27,7 +27,7 @@ class RouterTwigExtension extends \Twig_Extension
 
     public function asset(string $path): string
     {
-        $url = $_SERVER['REQUEST_URI'];
+        $url = '/';
         return $url . $path;
     }
 

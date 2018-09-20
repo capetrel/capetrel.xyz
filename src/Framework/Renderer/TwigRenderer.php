@@ -16,7 +16,6 @@ class TwigRenderer implements RendererInterface
      * Permet de rajouter un chemin pour charger les vues
      * @param string $namespace
      * @param null|string $path
-     * @throws \Twig_Error_Loader
      */
     public function addPath(string $namespace, ?string $path = null): void
     {
