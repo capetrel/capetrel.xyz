@@ -1,0 +1,25 @@
+# root
+
+# protection de la lecture des répertoires
+Options -Indexes
+# suivre les liens symbolique
+Options +FollowSymlinks
+
+# BEGIN rewrite
+<IfModule mod_rewrite.c>
+   RewriteEngine on
+   RewriteCond %{HTTP_HOST} ^monframework.test
+   RewriteCond %{REQUEST_URI} !^/public
+   RewriteRule ^(.*)$ /public/$1 [L]
+</IfModule>
+
+# KILL THEM ETAGS
+#Header unset ETag
+#FileETag none
+
+# hotlink protect
+#RewriteCond %{HTTP_REFERER} !^http://plancher-confort.fr/.*$      [NC]
+#RewriteCond %{HTTP_REFERER} !^http://plancher-confort.fr$      [NC]
+#RewriteCond %{HTTP_REFERER} !^http://www.plancher-confort.fr/.*$      [NC]
+#RewriteCond %{HTTP_REFERER} !^http://www.plancher-confort.fr$      [NC]
+#RewriteRule .*\.(jpg|jpeg|gif|png|bmp)$ - [F,NC]

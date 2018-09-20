@@ -1,0 +1,18 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+
+    <h1>Mon compte</h1>
+
+    <form action="" method="post">
+        {{ csrf_input() }}
+        {{ field('firstname', user.firstname, "Votre prénom :") }}
+        {{ field('lastname', user.lastname, "Votre nom :") }}
+        <h2>Changer de mot de passe</h2>
+        <p>Laisser vide pour ne rien modifier</p>
+        {{ field('password', null, "Mot de passe", {type: 'password'}) }}
+        {{ field('password_confirm', null, "Confirmer le mot de passe", {type: 'password'}) }}
+        <button class="btn btn-primary">Modifier les infos</button>
+    </form>
+
+{% endblock %}

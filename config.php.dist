@@ -1,0 +1,9 @@
+<?php
+/**
+ * Configuration de l'environnement de dev
+ */
+
+return [
+    'stripe.key' => '',
+    'stripe.secret' => ''
+];

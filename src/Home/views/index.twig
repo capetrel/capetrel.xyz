@@ -1,0 +1,18 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+
+    <h1>{{ page.title }}</h1>
+
+    <p>
+        {{ page.content }}
+    </p>
+
+    <h1>Citation du jour</h1>
+    <blockquote>
+        <p>{{ item.proverb }}</p>
+        <br>
+        <cite>- De {{ item.proverbAuthor }}.</cite>
+    </blockquote>
+
+{% endblock %}
