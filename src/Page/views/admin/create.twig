@@ -1,0 +1,16 @@
+{% extends '@admin/layout.twig' %}
+
+{% block title "Création d'une page" %}
+
+{% block body %}
+    <h1>Créer une nouvelle page</h1>
+
+    <form action="{{ path(routePrefix ~ '.create') }}" method="post">
+
+        {% include viewPath ~ '/form.twig' %}
+
+        <button class="btn btn-primary" type="submit">Ajouter</button>
+
+    </form>
+
+{% endblock %}

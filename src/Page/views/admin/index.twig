@@ -1,0 +1,52 @@
+{% extends '@admin/layout.twig' %}
+
+{% block title "Administrer les pages" %}
+
+{% block body %}
+    <h1>Administration du site</h1>
+
+    <p class="text-right">
+        <a class="btn btn-primary" href="{{ path(routePrefix ~'.create') }}">
+            Ajouter une page
+        </a>
+    </p>
+
+    <table class="table table-striped">
+
+        <thead>
+        <tr>
+            <td>Nom du module</td>
+            <td>Titre de la page</td>
+            <td>Nom de la page dans le menu</td>
+            <td>Contenu</td>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% set token_input = csrf_input() %}
+        {% for item in items %}
+            <tr>
+                <td>{{ item.moduleName }}</td>
+                <td>{{ item.title }}</td>
+                <td>{{ item.menuTitle }}</td>
+                <td>{{ item.content }}</td>
+                <td>
+                    <a href="{{ path(routePrefix ~'.edit', {id: item.id}) }}" class="btn btn-primary">Éditer</a>
+                    <form style="display: inline" action="{{ path(routePrefix ~'.delete', {id: item.id}) }}" method="post" onsubmit="return confirm('êtes vous sur ?')">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="btn btn-danger">
+                            Supprimer
+                        </button>
+                        {{ token_input | raw }}
+                    </form>
+                </td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+    {{ paginate(items, routePrefix ~'.index') }}
+
+{% endblock %}

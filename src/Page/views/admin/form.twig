@@ -1,0 +1,6 @@
+{{ csrf_input() }}
+
+{{ field('module_name', item.moduleName, "Nom du module") }}
+{{ field('title', item.title, "Titre de la page") }}
+{{ field('menu_title', item.menuTitle, "Nom de la page en menu") }}
+{{ field('content', item.content, "Contenu", {type: 'textarea'}) }}

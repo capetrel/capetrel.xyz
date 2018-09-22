@@ -1,0 +1,9 @@
+<div class="col-sm-4">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">{{ count }}</h4>
+            <p class="card-text">Page{% if count > 1 %}s{% endif %}</p>
+            <a class="btn btn-primary" href="{{ path('page.admin.index') }}">Gérer les pages</a>
+        </div>
+    </div>
+</div>

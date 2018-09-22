@@ -8,7 +8,7 @@ Options +FollowSymlinks
 # BEGIN rewrite
 <IfModule mod_rewrite.c>
    RewriteEngine on
-   RewriteCond %{HTTP_HOST} ^monframework.test
+   RewriteCond %{HTTP_HOST} ^capetrel.xyz.test
    RewriteCond %{REQUEST_URI} !^/public
    RewriteRule ^(.*)$ /public/$1 [L]
 </IfModule>
@@ -18,8 +18,4 @@ Options +FollowSymlinks
 #FileETag none
 
 # hotlink protect
-#RewriteCond %{HTTP_REFERER} !^http://plancher-confort.fr/.*$      [NC]
-#RewriteCond %{HTTP_REFERER} !^http://plancher-confort.fr$      [NC]
-#RewriteCond %{HTTP_REFERER} !^http://www.plancher-confort.fr/.*$      [NC]
-#RewriteCond %{HTTP_REFERER} !^http://www.plancher-confort.fr$      [NC]
 #RewriteRule .*\.(jpg|jpeg|gif|png|bmp)$ - [F,NC]

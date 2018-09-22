@@ -1,6 +1,7 @@
 <?php
 
 use App\Home\Action\HomeAction;
+use App\Page\PageModule;
 use Framework\App;
 use App\Admin\AdminModule;
 use App\Auth\AuthModule;
@@ -27,6 +28,7 @@ $app = (new App(['config/config.php', 'config.php']))
     ->addModule(AdminModule::class)
     ->addModule(AuthModule::class)
     ->addModule(AccountModule::class)
+    ->addModule(PageModule::class)
     ->addModule(HomeModule::class)
     ->addModule(ContactModule::class);
 

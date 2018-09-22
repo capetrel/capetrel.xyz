@@ -66,7 +66,7 @@ class FormExtensionTest extends TestCase
         $expected = str_replace("\n", '', "
 <div class=\"form-group\">
 <label for=\"name\">Titre</label>
-<textarea class=\"form-control\" name=\"name\" id=\"name\" rows=\"20\">demo</textarea>
+<textarea class=\"form-control\" name=\"name\" id=\"name\" rows=\"5\">demo</textarea>
 </div>");
 
         $this->assertSimilar($expected, $html);

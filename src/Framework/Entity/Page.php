@@ -62,10 +62,13 @@ class Page
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
+        if (is_null($this->title)) {
+            return '';
+        }
         return $this->title;
     }
 
@@ -78,10 +81,13 @@ class Page
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getMenuTitle(): string
+    public function getMenuTitle(): ?string
     {
+        if (is_null($this->menuTitle)) {
+            return '';
+        }
         return $this->menuTitle;
     }
 
@@ -94,10 +100,13 @@ class Page
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getContent(): string
+    public function getContent(): ?string
     {
+        if (is_null($this->content)) {
+            return '';
+        }
         return $this->content;
     }
 

@@ -5,6 +5,7 @@ use App\Framework\Actions\PageCrudAction;
 use App\Framework\Module;
 use App\Framework\Renderer\RendererInterface;
 use App\Home\Action\HomeAction;
+use App\Home\Action\HomeCrudAction;
 use Framework\Router;
 use Psr\Container\ContainerInterface;
 
@@ -27,7 +28,7 @@ class HomeModule extends Module
 
         if ($container->has('admin.prefix')) {
             $prefix = $container->get('admin.prefix');
-            $router->crud("$prefix/pages", PageCrudAction::class, "page.admin");
+            $router->crud("$prefix/home", HomeCrudAction::class, "home.admin");
         }
     }
 }
