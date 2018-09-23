@@ -15,7 +15,7 @@ class HomeTable extends Table
         $results = $this->findAll()->fetchAll();
         $proverbs = $results->toArray();
         $max = count($proverbs);
-        $random = rand(0, $max);
+        $random = rand(1, $max);
 
         return $this->findBy('id', "$random");
     }

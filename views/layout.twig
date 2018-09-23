@@ -9,114 +9,116 @@
     <title>{% block title "capetrel.xyz" %}</title>
 
     <link rel="stylesheet" href={{ asset('css/app.css') }}>
+
 </head>
 
-<body> <!--  onload="window.location.hash = 'footer'" -->
-<header>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 745 185.62">
-        <polyline class="foliage-1" points="745,0 611,140 502.9,160.2 99,0 "/>
-        <polygon class="foliage-2" points="0,0 0,185.6 410,0 "/>
-    </svg>
-</header>
+<body class="scrollbar" id="style-1" onload="window.location.hash = 'footer'" > <!--  onload="window.location.hash = 'footer'" -->
+    <div class="force-overflow">
+        <header>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 745 185.62">
+                <polyline class="foliage-1" points="745,0 611,140 502.9,160.2 99,0 "/>
+                <polygon class="foliage-2" points="0,0 0,185.6 410,0 "/>
+            </svg>
+        </header>
 
-<main>
-    <aside class="main-left">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 107 492">
-            <rect class="trunk-1" width="107" height="492"/>
-        </svg>
-    </aside>
-
-    <section role="main">
-        <div class="content">
-            {% if flash('success') %}
-                <div class="alert alert-success">
-                    {{ flash('success') }}
-                </div>
-            {% endif %}
-
-            {% if flash('error') %}
-                <div class="alert alert-danger">
-                    {{ flash('error') }}
-                </div>
-            {% endif %}
-
-            {% block body %}{% endblock %}
-        </div>
-    </section>
-
-    <aside class="main-right">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 113.97 192">
-            <polygon class="trunk-2" points="46.97 165 81.33 118.31 113.97 0 113.97 192 0 192 46.97 165"/>
-        </svg>
-    </aside>
-</main>
-
-<footer id="footer">
-    <div class="grass"></div>
-    <div class="ground">
-        <svg class="ground-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 172 82">
-            <path class="root-1"
-                  d="M107,0l46,36V56l19,22v4H160L140,64,130,41,91,27,87,48l3,17L83.33,82H76L65,59V52L59,28,40,29V41l3,15L24,69,18.67,82,12,72,3,64,0,53V0Z"/>
-        </svg>
-        <nav class="menu">
-
-            <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
-            <label class="menu-open-button" for="menu-open">
-                <span class="lines line-1"></span>
-                <span class="lines line-2"></span>
-                <span class="lines line-3"></span>
-            </label>
-
-            <a href="/" class="menu-item">
-                <svg id="home" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45">
-                    <circle fill="#333E48" cx="21" cy="22" r="20.6"/>
-                    <circle class="circle-icon" fill="#00AFAA" cx="22.2" cy="20.9" r="20.6"/>
-                    <polygon class="content-icon" fill="#BDBBBB" stroke="#333E48" stroke-width="1.9484" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
-                    29.8,9.1 22,4.7 14.2,9.1 6.4,13.6 9.7,13.6 9.7,34.2 34.2,34.2 34.2,13.6 37.5,13.6 	"/>
-                    <rect x="17.7" y="20.9" fill="none" stroke="#333E48" stroke-width="1.1909" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="7.5" height="13.3"/>
+        <main>
+            <aside class="main-left">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 107 492">
+                    <rect class="trunk-1" width="107" height="492"/>
                 </svg>
-            </a>
-            <a href="#" class="menu-item">
-                <svg id="cv" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45">
-                    <circle fill="#333E48" cx="21" cy="22" r="20.6"/>
-                    <circle class="circle-icon" fill="#00AFAA" cx="22.2" cy="20.9" r="20.6"/>
-                    <path class="content-icon" fill="#BDBBBB" stroke="#333E48" stroke-width="1.9484" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+            </aside>
+
+            <section role="main">
+                <div class="content">
+                    {% if flash('success') %}
+                        <div class="alert alert-success">
+                            {{ flash('success') }}
+                        </div>
+                    {% endif %}
+
+                    {% if flash('error') %}
+                        <div class="alert alert-danger">
+                            {{ flash('error') }}
+                        </div>
+                    {% endif %}
+
+                    {% block body %}{% endblock %}
+                </div>
+            </section>
+
+            <aside class="main-right">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 113.97 192">
+                    <polygon class="trunk-2" points="46.97 165 81.33 118.31 113.97 0 113.97 192 0 192 46.97 165"/>
+                </svg>
+            </aside>
+        </main>
+
+        <footer id="footer">
+            <div class="grass"></div>
+            <div class="ground">
+                <svg class="ground-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 172 82">
+                    <path class="root-1"
+                          d="M107,0l46,36V56l19,22v4H160L140,64,130,41,91,27,87,48l3,17L83.33,82H76L65,59V52L59,28,40,29V41l3,15L24,69,18.67,82,12,72,3,64,0,53V0Z"/>
+                </svg>
+                <nav class="menu">
+
+                    <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
+                    <label class="menu-open-button" for="menu-open">
+                        <span class="lines line-1"></span>
+                        <span class="lines line-2"></span>
+                        <span class="lines line-3"></span>
+                    </label>
+
+                    <a href="/" class="menu-item">
+                        <svg id="home" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45">
+                            <circle fill="#333E48" cx="21" cy="22" r="20.6"/>
+                            <circle class="circle-icon" fill="#00AFAA" cx="22.2" cy="20.9" r="20.6"/>
+                            <polygon class="content-icon" fill="#BDBBBB" stroke="#333E48" stroke-width="1.9484" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+                    29.8,9.1 22,4.7 14.2,9.1 6.4,13.6 9.7,13.6 9.7,34.2 34.2,34.2 34.2,13.6 37.5,13.6 	"/>
+                            <rect x="17.7" y="20.9" fill="none" stroke="#333E48" stroke-width="1.1909" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="7.5" height="13.3"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <svg id="cv" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45">
+                            <circle fill="#333E48" cx="21" cy="22" r="20.6"/>
+                            <circle class="circle-icon" fill="#00AFAA" cx="22.2" cy="20.9" r="20.6"/>
+                            <path class="content-icon" fill="#BDBBBB" stroke="#333E48" stroke-width="1.9484" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
                     M30.7,23.9h-5.9v-1.5c2.3-1.2,4-3.6,4.5-6.5c0.1,0.2,0.3,0.3,0.5,0.3c0.5,0,0.9-0.8,0.9-1.8s-0.4-1.8-0.9-1.8
                     c-0.1,0-0.3,0.1-0.4,0.2c-0.6-4.4-4-7.9-8.2-7.9s-7.5,3.6-8,8c-0.1,0-0.2-0.1-0.4-0.1c-0.5,0-0.9,0.8-0.9,1.8s0.4,1.8,0.9,1.8
                     c0.2,0,0.3-0.1,0.5-0.3c0.5,2.9,2.2,5.2,4.5,6.5V24h-4.7c-1.9,0-3.5,1.6-3.5,3.5V34h3.1l0.4-1.8l0.6,1.8H29l0.6-1.8l0.6,1.8h4.1
                     v-6.5C34.3,25.6,32.7,23.9,30.7,23.9z"/>
-                </svg>
-            </a>
-            <a href="#" class="menu-item">
-                <svg id="portfolio" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45">
-                    <circle display="inline" fill="#333E48" cx="21" cy="22" r="20.6"/>
-                    <circle class="circle-icon" display="inline" fill="#00AFAA" cx="22.2" cy="20.9" r="20.6"/>
-                    <polygon class="content-icon" fill="#BDBBBB" stroke="#333E48" stroke-width="1.9484" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+                        </svg>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <svg id="portfolio" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45">
+                            <circle display="inline" fill="#333E48" cx="21" cy="22" r="20.6"/>
+                            <circle class="circle-icon" display="inline" fill="#00AFAA" cx="22.2" cy="20.9" r="20.6"/>
+                            <polygon class="content-icon" fill="#BDBBBB" stroke="#333E48" stroke-width="1.9484" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
                     8,10.7 19.4,34.4 38,27.2 25.2,8.5"/>
-                    <path fill="none" stroke="#333E48" stroke-width="1.1909" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                            <path fill="none" stroke="#333E48" stroke-width="1.1909" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
                     M25.2,22.9l-0.7,2.9l-5.7-2.2l-3-5.8c0,0-2.9-5,1.4-5.7s7.9-1.4,10,3.6s0,5,1.4,7.9"/>
-                    <path fill="#333E48" d="M29.3,23.7V21L34,9.2c0,0,0.3-0.8,1.5-0.3c1.3,0.5,0.9,1.1,0.9,1.1l-5,11.8L29.3,23.7z"/>
-                </svg>
-            </a>
-            <a href="{{ path('contact') }}" class="menu-item">
-                <svg id="contact" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45">
-                    <circle fill="#333E48" cx="21" cy="22" r="20.6"/>
-                    <circle class="circle-icon" fill="#00AFAA" cx="22.2" cy="20.9" r="20.6"/>
-                    <path class="content-icon" fill="#BDBBBB" stroke="#333E48" stroke-width="1.9484" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                            <path fill="#333E48" d="M29.3,23.7V21L34,9.2c0,0,0.3-0.8,1.5-0.3c1.3,0.5,0.9,1.1,0.9,1.1l-5,11.8L29.3,23.7z"/>
+                        </svg>
+                    </a>
+                    <a href="{{ path('contact') }}" class="menu-item">
+                        <svg id="contact" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45">
+                            <circle fill="#333E48" cx="21" cy="22" r="20.6"/>
+                            <circle class="circle-icon" fill="#00AFAA" cx="22.2" cy="20.9" r="20.6"/>
+                            <path class="content-icon" fill="#BDBBBB" stroke="#333E48" stroke-width="1.9484" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
                     M36,29.9L8.1,30.2c-0.4,0-0.8-0.3-0.8-0.8L7.1,9.8C7.1,9.4,7.4,9,7.9,9l27.9-0.3c0.4,0,0.8,0.3,0.8,0.8l0.2,19.6
                     C36.8,29.5,36.4,29.9,36,29.9z"/>
-                    <path fill="none" stroke="#333E48" stroke-width="1.1909" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                            <path fill="none" stroke="#333E48" stroke-width="1.1909" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
                     M7.2,9.3l4.1,7.3l21.3-0.3l3.7-7.4c0,0-0.2-0.2-0.6-0.2L7.8,9C7.6,9,7.3,9.2,7.2,9.3z"/>
-                </svg>
-            </a>
-            <a href="#" class="menu-item">
-                <svg id="game" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45">
-                    <circle fill="#333E48" cx="21" cy="22" r="20.6"/>
-                    <circle class="circle-icon" fill="#00AFAA" cx="22.2" cy="20.9" r="20.6"/>
-                    <path class="content-icon" fill="#BDBBBB" stroke="#333E48" stroke-width="1.9484" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                        </svg>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <svg id="game" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45">
+                            <circle fill="#333E48" cx="21" cy="22" r="20.6"/>
+                            <circle class="circle-icon" fill="#00AFAA" cx="22.2" cy="20.9" r="20.6"/>
+                            <path class="content-icon" fill="#BDBBBB" stroke="#333E48" stroke-width="1.9484" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
                     M26.6,8.4c2.6-1.8,5.8-0.7,7.4,2.5s0.9,7.2-1.6,8.9c-1.4,1-3.1,1.2-4.6,0.4c-1.2,0.8-2.6,1.7-4,2.7s-2.8,2-3.9,3
                     c-0.1,1.8-1,3.5-2.5,4.6c-2.5,1.8-5.9,0.7-7.5-2.4s-0.9-7.2,1.6-8.9l0.3-0.2l0.7-0.4c0,0,11.6-8.2,12.5-8.8S25.8,9,26.6,8.4z"/>
-                    <path fill="#333E48" d="M16.5,24.1l-0.8-1.6l-1.3,0.9l-0.8-1.5l-1.4,1l0.7,1.6l-1.3,0.9l0.9,1.6l1.3-0.9l0.8,1.5l1.4-1l-0.8-1.5
+                            <path fill="#333E48" d="M16.5,24.1l-0.8-1.6l-1.3,0.9l-0.8-1.5l-1.4,1l0.7,1.6l-1.3,0.9l0.9,1.6l1.3-0.9l0.8,1.5l1.4-1l-0.8-1.5
                     L16.5,24.1 M23,14.2c0.3-0.2,0.4-0.6,0.2-0.8c-0.4-0.4-0.7-0.1-0.7-0.1l-6.4,4.5c-0.3,0.2-0.3,0.5-0.1,0.7
                     c0.4,0.4,0.6,0.2,0.6,0.2L23,14.2 M32.5,11.6c-0.2-0.5-0.8-0.7-1.4-0.5c-0.9,0.3-0.9,1.3-0.6,1.9c0.2,0.5,0.8,0.7,1.4,0.5
                     C32.6,13.2,32.8,12.2,32.5,11.6z M31.5,15.5c-0.2-0.5-0.8-0.7-1.4-0.5c-0.9,0.3-0.9,1.3-0.6,1.9c0.2,0.5,0.8,0.7,1.4,0.5
@@ -125,20 +127,22 @@
                     c-0.4,0.3-0.7,1.2-0.4,1.8c0.2,0.5,0.8,0.7,1.4,0.5C28.5,12.7,28.6,12.6,28.7,12.6 M21.5,20.6c0-0.2,0-0.4-0.3-0.4
                     s-0.4,0.2-0.4,0.3l-0.5,2c-0.1,0.2,0,0.4,0.3,0.4c0.2,0,0.4-0.1,0.4-0.3L21.5,20.6 M23.8,18.7c0-0.2-0.1-0.4-0.3-0.4
                     c-0.3,0-0.4,0.2-0.4,0.3l-0.3,2c0,0.2,0,0.4,0.3,0.4c0.2,0,0.3-0.2,0.4-0.3L23.8,18.7"/>
+                        </svg>
+                    </a>
+
+                </nav>
+
+                <svg class="ground-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 209.33 82">
+                    <path class="root-2"
+                          d="M87,0S60,16,56,17,34,34,34,34l3,16L25,62,10,71v3L-.33,82,17,78l5-6,16-6,16-5V44l3-10H77l15-8,22,8-8,18,1,14L95,78l0,4h6.63L118,71V59l8-11,14-21,12-10,16,8-7,25,4,13,6,19h9.33L177,61l9-15,10-16,13,20.33V0Z"
+                          transform="translate(0.33)"/>
                 </svg>
-            </a>
+            </div>
 
-        </nav>
+        </footer>
 
-        <svg class="ground-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 209.33 82">
-            <path class="root-2"
-                  d="M87,0S60,16,56,17,34,34,34,34l3,16L25,62,10,71v3L-.33,82,17,78l5-6,16-6,16-5V44l3-10H77l15-8,22,8-8,18,1,14L95,78l0,4h6.63L118,71V59l8-11,14-21,12-10,16,8-7,25,4,13,6,19h9.33L177,61l9-15,10-16,13,20.33V0Z"
-                  transform="translate(0.33)"/>
-        </svg>
+        <script src={{ asset('js/app.js') }}></script>
+
     </div>
-
-</footer>
-
-<script src={{ asset('js/app.js') }}></script>
 </body>
 </html>
