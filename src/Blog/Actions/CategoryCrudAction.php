@@ -19,11 +19,11 @@ class CategoryCrudAction extends CrudAction
 
     public function __construct(
         RendererInterface $renderer,
-        CategoryTable $table,
+        CategoryTable $categoryTable,
         Router $router,
         FlashService $flash
     ) {
-        parent::__construct($renderer, $table, $router, $flash);
+        parent::__construct($renderer, $categoryTable, $router, $flash);
     }
 
     protected function getValidator(ServerRequestInterface $request)

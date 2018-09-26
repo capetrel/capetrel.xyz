@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Chau+Philomene+One');
+@import url("https://fonts.googleapis.com/css?family=Chau+Philomene+One");
 
 /****************************************************************************/
 /****************************** HTML STYLE *******************************/
@@ -14,8 +14,14 @@ body{
     background: #dce7ec;
     color: #333e48;
     /*height: 100vh; TODO doit ajuster contenu mais remplir l'ecran quand pas assez de contenu*/
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     font-family: 'Chau Philomene One', sans-serif;
     margin: 0;
@@ -36,11 +42,18 @@ main {
     background: no-repeat bottom center url("../img/bg.svg");
     font-weight: lighter;
     margin: 0;
-    height: 100%;
+    /* height: 100%; */
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
 }
 section{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: 100%;
     padding-top: 25vh;
@@ -84,6 +97,15 @@ blockquote cite{
 /****************************** APP STYLE ***********************************/
 /****************************************************************************/
 
+.logo{
+    position: absolute;
+    background: no-repeat url("../img/logo-capetrel.svg");
+    top: 1vh;
+    left: 1vw;
+    width: 13vw;
+    height: 3vh;
+}
+
 .main-left{
     background: #908f88;
     width: 8.3vw;
@@ -95,7 +117,7 @@ blockquote cite{
     margin-bottom: 3vh;
 }
 
-.content p, form{
+.content p, form, address{
     padding-top: 2vh;
     padding-left: 2vw;
     padding-bottom: 5vh;
@@ -132,9 +154,7 @@ blockquote cite{
     height: 0;
     width: 2%;
     -webkit-transform: skew(0deg, -6deg);
-    -moz-transform: skew(0deg, -6deg);
     -ms-transform: skew(0deg, -6deg);
-    -o-transform: skew(0deg, -6deg);
     transform: skew(0deg, -25deg);
     background: #908f88 0 100%;
 }
@@ -142,7 +162,12 @@ blockquote cite{
 
 .main-right{
     width: 8vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
 }
 
@@ -156,8 +181,15 @@ blockquote cite{
     background: #a79385;
     height: 12vh;
     width: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
 }
 
@@ -171,9 +203,18 @@ blockquote cite{
     margin-left: 22vw;
     width: 60%;
     list-style: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
+    /*noinspection CssInvalidPropertyValue*/
+    -ms-flex-pack: distribute;
     justify-content: space-around;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
@@ -186,6 +227,13 @@ blockquote cite{
     display: none;
 }
 
+/*
+.menu-item {
+    width: 45px;
+    height: 45px;
+
+}
+*/
 .icon{
     height: 35%;
     width: 35%;
@@ -208,6 +256,8 @@ blockquote cite{
 }
 
 .nav div{
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
     align-self: center;
 }
 
@@ -290,7 +340,10 @@ blockquote cite{
     background-color: rgba(239, 239, 239, 0.7);
     border: 1px solid rgba(51, 62, 72, 0.3);
     border-radius: 0.25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    /* transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; */
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
 
 .form-control::-ms-expand {
@@ -303,15 +356,11 @@ blockquote cite{
     background-color: #fff;
     border-color: rgba(51, 62, 72, 0.3);
     outline: 0;
+    -webkit-box-shadow: 0 0 0 0.2rem #63bcba;
     box-shadow: 0 0 0 0.2rem #63bcba;
 }
 
 .form-control::-webkit-input-placeholder {
-    color: #6c757d;
-    opacity: 1;
-}
-
-.form-control::-moz-placeholder {
     color: #6c757d;
     opacity: 1;
 }
@@ -401,7 +450,10 @@ select.form-control:focus::-ms-value {
     font-family: 'Chau Philomene One', sans-serif;
     border-radius: 90% 5% 90% 33%;
     color: #f0f0f0;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    -o-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    /* transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; */
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
 
 .btn:hover, .btn:focus {
@@ -410,6 +462,7 @@ select.form-control:focus::-ms-value {
 
 .btn:focus, .btn.focus {
     outline: 0;
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
@@ -427,10 +480,27 @@ select.form-control:focus::-ms-value {
 }
 
 .btn-primary:focus, .btn-primary.focus {
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }
+
+.dev-list{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+.dev-logo{
+    height: 15vh;
+}
+
 /* to top button */
 .scroll-button{
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     font-size: 1.2rem;
     line-height: 2rem;
@@ -478,15 +548,16 @@ select.form-control:focus::-ms-value {
 }
 
 @-webkit-keyframes mover {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-10px); }
+    0% { -webkit-transform: translateY(0); transform: translateY(0); }
+    100% { -webkit-transform: translateY(-10px); transform: translateY(-10px); }
 }
 
 @keyframes mover {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-10px); }
+    0% { -webkit-transform: translateY(0); transform: translateY(0); }
+    100% { -webkit-transform: translateY(-10px); transform: translateY(-10px); }
 }
 
+/*noinspection CssInvalidPropertyValue*/
 .scrollbar {
     height: 300px;
     overflow: overlay;
@@ -531,7 +602,8 @@ select.form-control:focus::-ms-value {
         transform: translate3d(0, 0, 0);
         -webkit-transition: -webkit-transform ease-out 200ms;
         transition: -webkit-transform ease-out 200ms;
-        transition: transform ease-out 200ms;
+        -o-transition: transform ease-out 200ms;
+        transition: transform ease-out 200ms, -webkit-transform ease-out 200ms;
     }
 
     .menu-item {
@@ -544,7 +616,8 @@ select.form-control:focus::-ms-value {
         transform: translate3d(0, 0, 0);
         -webkit-transition: -webkit-transform ease-out 200ms;
         transition: -webkit-transform ease-out 200ms;
-        transition: transform ease-out 200ms;
+        -o-transition: transform ease-out 200ms;
+        transition: transform ease-out 200ms, -webkit-transform ease-out 200ms;
     }
 
     .menu-open {
@@ -563,7 +636,8 @@ select.form-control:focus::-ms-value {
         margin-top: -1.5px;
         -webkit-transition: -webkit-transform 200ms;
         transition: -webkit-transform 200ms;
-        transition: transform 200ms;
+        -o-transition: transform 200ms;
+        transition: transform 200ms, -webkit-transform 200ms;
     }
 
     .line-1 {
@@ -601,6 +675,7 @@ select.form-control:focus::-ms-value {
         width: 45px;
         height: 45px;
         text-align: center;
+        -webkit-box-sizing: border-box;
         box-sizing: border-box;
         font-size: 26px;
     }
@@ -612,49 +687,59 @@ select.form-control:focus::-ms-value {
 
     .menu-item:nth-child(3) {
         -webkit-transition-duration: 180ms;
+        -o-transition-duration: 180ms;
         transition-duration: 180ms;
     }
 
     .menu-item:nth-child(4) {
         -webkit-transition-duration: 180ms;
+        -o-transition-duration: 180ms;
         transition-duration: 180ms;
     }
 
     .menu-item:nth-child(5) {
         -webkit-transition-duration: 180ms;
+        -o-transition-duration: 180ms;
         transition-duration: 180ms;
     }
 
     .menu-item:nth-child(6) {
         -webkit-transition-duration: 180ms;
+        -o-transition-duration: 180ms;
         transition-duration: 180ms;
     }
 
     .menu-item:nth-child(7) {
         -webkit-transition-duration: 180ms;
+        -o-transition-duration: 180ms;
         transition-duration: 180ms;
     }
 
     .menu-item:nth-child(8) {
         -webkit-transition-duration: 180ms;
+        -o-transition-duration: 180ms;
         transition-duration: 180ms;
     }
 
     .menu-item:nth-child(9) {
         -webkit-transition-duration: 180ms;
+        -o-transition-duration: 180ms;
         transition-duration: 180ms;
     }
 
     .menu-open-button {
         z-index: 2;
         -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        -o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
         transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
         -webkit-transition-duration: 400ms;
+        -o-transition-duration: 400ms;
         transition-duration: 400ms;
         -webkit-transform: scale(1.1, 1.1) translate3d(0, 0, 0);
         transform: scale(1.1, 1.1) translate3d(0, 0, 0);
         cursor: pointer;
-        box-shadow: -2px 1px 0px 1px rgba(51, 62, 72, 1);
+        -webkit-box-shadow: -2px 1px 0 1px rgba(51, 62, 72, 1);
+        box-shadow: -2px 1px 0 1px rgba(51, 62, 72, 1);
     }
 
     .menu-open-button:hover {
@@ -664,8 +749,10 @@ select.form-control:focus::-ms-value {
 
     .menu-open:checked + .menu-open-button {
         -webkit-transition-timing-function: linear;
+        -o-transition-timing-function: linear;
         transition-timing-function: linear;
         -webkit-transition-duration: 200ms;
+        -o-transition-duration: 200ms;
         transition-duration: 200ms;
         -webkit-transform: scale(0.8, 0.8) translate3d(0, 0, 0);
         transform: scale(0.8, 0.8) translate3d(0, 0, 0);
@@ -673,10 +760,12 @@ select.form-control:focus::-ms-value {
 
     .menu-open:checked ~ .menu-item {
         -webkit-transition-timing-function: cubic-bezier(0.935, 0, 0.34, 1.33);
+        -o-transition-timing-function: cubic-bezier(0.935, 0, 0.34, 1.33);
         transition-timing-function: cubic-bezier(0.935, 0, 0.34, 1.33);
     }
 
     .menu-open:checked ~ .menu-item:nth-child(3) {
+        -o-transition-duration: 380ms;
         transition-duration: 380ms;
         -webkit-transition-duration: 380ms;
         -webkit-transform: translate3d(0.08361px, -104.99997px, 0);
@@ -684,6 +773,7 @@ select.form-control:focus::-ms-value {
     }
 
     .menu-open:checked ~ .menu-item:nth-child(4) {
+        -o-transition-duration: 480ms;
         transition-duration: 480ms;
         -webkit-transition-duration: 480ms;
         -webkit-transform: translate3d(90.9466px, -52.47586px, 0);
@@ -691,6 +781,7 @@ select.form-control:focus::-ms-value {
     }
 
     .menu-open:checked ~ .menu-item:nth-child(5) {
+        -o-transition-duration: 580ms;
         transition-duration: 580ms;
         -webkit-transition-duration: 580ms;
         -webkit-transform: translate3d(90.9466px, 52.47586px, 0);
@@ -698,6 +789,7 @@ select.form-control:focus::-ms-value {
     }
 
     .menu-open:checked ~ .menu-item:nth-child(6) {
+        -o-transition-duration: 180ms;
         transition-duration: 180ms;
         -webkit-transition-duration: 180ms;
         -webkit-transform: translate3d(-90.86291px, 52.62064px, 0);
@@ -705,6 +797,7 @@ select.form-control:focus::-ms-value {
     }
 
     .menu-open:checked ~ .menu-item:nth-child(7) {
+        -o-transition-duration: 280ms;
         transition-duration: 280ms;
         -webkit-transition-duration: 280ms;
         -webkit-transform: translate3d(-91.03006px, -52.33095px, 0);
@@ -712,6 +805,7 @@ select.form-control:focus::-ms-value {
     }
 
     .menu-open:checked ~ .menu-item:nth-child(8) {
+        -o-transition-duration: 780ms;
         transition-duration: 780ms;
         -webkit-transition-duration: 780ms;
         -webkit-transform: translate3d(-0.25084px, -104.9997px, 0);

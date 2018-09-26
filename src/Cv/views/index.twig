@@ -1,0 +1,47 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+
+    <h1>{{ studentSkills[0].cName }}</h1>
+    {% for skill in studentSkills  %}
+        <p>
+            {{ skill.endedAt }} : {{ skill.skillName }} <br>
+            {{ skill.description }}. {{ skill.place }}
+        </p>
+    {% endfor %}
+
+    <h1>{{ devSkills[0].cName }}</h1>
+    <p class="dev-list">
+    {% for skill in devSkills  %}
+        {% if skill.picto %}
+            <img class="dev-logo" src="{{ asset('uploads/skills/logos/' ~ skill.picto) }}" alt="logo {{ skill.skillName }}">
+
+        {% else %}
+            <i>
+                {{ skill.skillName }} - {{ skill.skillLevel }},&nbsp;
+            </i>
+        {% endif %}
+
+    {% endfor %}
+    </p>
+
+    <h1>{{ cv.cvName }}</h1>
+    <address>
+        {{ user.firstName }} {{ user.lastName }}<br>
+        {{ user.address }}<br>
+        {{ user.email }}<br>
+        {{ user.tel1 }}<br>
+        {{ user.driverLicence }}
+    </address>
+
+    <h1>{{ proSkills[0].cName }}</h1>
+    {% for skill in proSkills  %}
+        <p>
+            {{ skill.startedAt }} - {{ skill.endedAt }} : {{ skill.skillName }} <br>
+            {{ skill.description }}. {{ skill.place }}.
+        </p>
+
+    {% endfor %}
+
+
+{% endblock %}

@@ -17,11 +17,11 @@ class HomeCrudAction extends CrudAction
 
     public function __construct(
         RendererInterface $renderer,
-        HomeTable $table,
+        HomeTable $homeTable,
         Router $router,
         FlashService $flash
     ) {
-        parent::__construct($renderer, $table, $router, $flash);
+        parent::__construct($renderer, $homeTable, $router, $flash);
     }
 
     public function delete(ServerRequestInterface $request)

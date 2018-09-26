@@ -11,6 +11,7 @@ class Validator
     private const MIME_TYPE = [
         'jpg' => 'image/jpeg',
         'png' => 'image/png',
+        'svg' => 'image/svg+xml',
         'pdf' => 'application/pdf'
     ];
 

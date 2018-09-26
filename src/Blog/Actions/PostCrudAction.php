@@ -30,13 +30,13 @@ class PostCrudAction extends CrudAction
 
     public function __construct(
         RendererInterface $renderer,
-        PostTable $table,
+        PostTable $postTable,
         Router $router,
         FlashService $flash,
         CategoryTable $categoryTable,
         PostUpload $postUpload
     ) {
-        parent::__construct($renderer, $table, $router, $flash);
+        parent::__construct($renderer, $postTable, $router, $flash);
         $this->categoryTable = $categoryTable;
         $this->postUpload = $postUpload;
     }

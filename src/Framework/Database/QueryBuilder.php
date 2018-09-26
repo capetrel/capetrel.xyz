@@ -14,9 +14,8 @@ class QueryBuilder implements \IteratorAggregate
 
     private $where = [];
 
-    /* TODO Créer le GROUP BY
     private $group;
-   */
+
     private $order = [];
 
     private $limit;
@@ -74,13 +73,19 @@ class QueryBuilder implements \IteratorAggregate
     }
 
     /**
-     * Spécifie la condition de récupération
+     * Spécifie l'ordre de récupération
      * @param string $orders
      * @return QueryBuilder
      */
     public function order(string $orders): self
     {
         $this->order[] = $orders;
+        return $this;
+    }
+
+    public function group(string $field): self
+    {
+        $this->group[] = $field;
         return $this;
     }
 
@@ -229,6 +234,10 @@ class QueryBuilder implements \IteratorAggregate
         if (!empty($this->order)) {
             $parts[] = 'ORDER BY';
             $parts[] = join(', ', $this->order);
+        }
+        if (!empty($this->group)) {
+            $parts[] = 'GROUP BY';
+            $parts[] = join(', ', $this->group);
         }
         if ($this->limit) {
             $parts[] = 'LIMIT ' . $this->limit;

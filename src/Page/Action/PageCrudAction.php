@@ -16,11 +16,11 @@ class PageCrudAction extends CrudAction
 
     public function __construct(
         RendererInterface $renderer,
-        PageTable $table,
+        PageTable $pageTable,
         Router $router,
         FlashService $flash
     ) {
-        parent::__construct($renderer, $table, $router, $flash);
+        parent::__construct($renderer, $pageTable, $router, $flash);
     }
 
     public function delete(ServerRequestInterface $request)

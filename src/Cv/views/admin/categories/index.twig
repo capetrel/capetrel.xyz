@@ -1,0 +1,48 @@
+{% extends '@admin/layout.twig' %}
+
+{% block title "Administrer les cvs" %}
+
+{% block body %}
+    <h1>Administration du site</h1>
+
+    <p class="text-right">
+        <a class="btn btn-primary" href="{{ path(routePrefix ~'.create') }}">
+            Ajouter un cv
+        </a>
+    </p>
+
+    <table class="table table-striped">
+
+        <thead>
+        <tr>
+            <td>Nom du C.V.</td>
+            <td>Auteur du C.V.</td>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% set token_input = csrf_input() %}
+        {% for item in items %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.userId }}</td>
+                <td>
+                    <a href="{{ path(routePrefix ~'.edit', {id: item.id}) }}" class="btn btn-primary">Éditer</a>
+                    <form style="display: inline" action="{{ path(routePrefix ~'.delete', {id: item.id}) }}" method="post" onsubmit="return confirm('êtes vous sur ?')">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="btn btn-danger">
+                            Supprimer
+                        </button>
+                        {{ token_input | raw }}
+                    </form>
+                </td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+    {{ paginate(items, routePrefix ~'.index') }}
+
+{% endblock %}

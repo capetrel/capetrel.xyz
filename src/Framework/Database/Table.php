@@ -35,12 +35,13 @@ class Table
 
     /**
      * Récupère une liste clef / valeur de nos enregistrements
+     * @param string $field
      * @return array
      */
-    public function findList(): array
+    public function findList(string $field): array
     {
         $results = $this->pdo
-            ->query("SELECT id, name FROM {$this->table}")
+            ->query("SELECT id, $field FROM {$this->table}")
             ->fetchAll(PDO::FETCH_NUM);
         $list = [];
         foreach ($results as $result) {

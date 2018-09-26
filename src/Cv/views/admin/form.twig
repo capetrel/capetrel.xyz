@@ -1,0 +1,4 @@
+{{ csrf_input() }}
+
+{{ field('cv_name', item.cvName, "Le titre du CV") }}
+{{ field('user_id', item.userId, "L'auteur du CV", {options: users}) }}

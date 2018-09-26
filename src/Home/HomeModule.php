@@ -1,7 +1,6 @@
 <?php
 namespace App\Home;
 
-use App\Framework\Actions\PageCrudAction;
 use App\Framework\Module;
 use App\Framework\Renderer\RendererInterface;
 use App\Home\Action\HomeAction;

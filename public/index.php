@@ -7,6 +7,7 @@ use App\Admin\AdminModule;
 use App\Auth\AuthModule;
 use App\Account\AccountModule;
 use App\Home\HomeModule;
+use App\Cv\CvModule;
 use App\Contact\ContactModule;
 use App\Framework\Middleware\TrailingSlashMiddleware;
 use App\Auth\ForbiddenMiddleware;
@@ -30,6 +31,7 @@ $app = (new App(['config/config.php', 'config.php']))
     ->addModule(AccountModule::class)
     ->addModule(PageModule::class)
     ->addModule(HomeModule::class)
+    ->addModule(CvModule::class)
     ->addModule(ContactModule::class);
 
 $container = $app->getContainer();
