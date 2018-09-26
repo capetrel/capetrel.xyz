@@ -29,7 +29,7 @@ class CvModule extends Module
         if ($container->has('admin.prefix')) {
             $prefix = $container->get('admin.prefix');
             $router->crud("$prefix/cv", CvCrudAction::class, "cv.admin");
-            $router->crud("$prefix/cv/skills", SkillCrudAction::class, "cv.skills.admin");
+            $router->crud("$prefix/cv/skills", SkillCrudAction::class, "cv.skills.admin"); ///{id:\d+}
         }
     }
 

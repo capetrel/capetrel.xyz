@@ -1,15 +1,23 @@
-{% extends 'layout.twig' %}
+{% extends '@admin/layout.twig' %}
 
 {% block body %}
 
+    <h1>Ajouter un utilisateur</h1>
 
     <form action="{{ path('account.signup') }}" method="post">
         {{ csrf_input() }}
-        {{ field('username', user.username, "Nom d'utilisateur") }}
-        {{ field('email', user.email, "Email", {type: 'email'}) }}
+        <div class="row">
+            <div class="col-md-6">
+                {{ field('username', user.username, "Nom d'utilisateur") }}
+            </div>
+            <div class="col-md-6">
+                {{ field('email', user.email, "Email", {type: 'email'}) }}
+            </div>
+        </div>
+
         {{ field('password', null, "Mot de passe", {type: 'password'}) }}
         {{ field('password_confirm', null, "Confirmer le mot de passe", {type: 'password'}) }}
-        <button class="btn btn-primary">S'inscrire</button>
+
     </form>
 
 {% endblock %}
