@@ -1,6 +1,7 @@
 <?php
 namespace App\Cv;
 
+use App\Cv\Action\CategoryCrudAction;
 use App\Cv\Action\CvAction;
 use App\Cv\Action\CvCrudAction;
 use App\Cv\Action\SkillCrudAction;
@@ -29,7 +30,9 @@ class CvModule extends Module
         if ($container->has('admin.prefix')) {
             $prefix = $container->get('admin.prefix');
             $router->crud("$prefix/cv", CvCrudAction::class, "cv.admin");
-            $router->crud("$prefix/cv/skills", SkillCrudAction::class, "cv.skills.admin"); ///{id:\d+}
+            $router->get("$prefix/cv/{slug:[a-z\-0-9]+}", SkillCrudAction::class, "cv.admin.show");
+            $router->crud("$prefix/cv/{slug:[a-z\-0-9]+}/skill", SkillCrudAction::class, "cv.admin.skills");
+            $router->crud("$prefix/categories", CategoryCrudAction::class, "cv.category.admin");
         }
     }
 

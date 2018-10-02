@@ -4,6 +4,7 @@ namespace App\Contact;
 use App\Framework\Renderer\RendererInterface;
 use App\Framework\Response\RedirectResponse;
 use App\Framework\Session\FlashService;
+use App\Framework\Table\PageTable;
 use Framework\Validator;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -30,17 +31,24 @@ class ContactAction
      */
     private $mailer;
 
+    /**
+     * @var PageTable
+     */
+    private $pageTable;
+
 
     public function __construct(
         string $to,
         RendererInterface $renderer,
         FlashService $flash,
-        \Swift_Mailer $mailer
+        \Swift_Mailer $mailer,
+        PageTable $pageTable
     ) {
         $this->renderer = $renderer;
         $this->to = $to;
         $this->flash = $flash;
         $this->mailer = $mailer;
+        $this->pageTable = $pageTable;
     }
 
     /**
@@ -49,8 +57,9 @@ class ContactAction
      */
     public function __invoke(ServerRequestInterface $request)
     {
+        $page = $this->pageTable->findPageContent('contact');
         if ($request->getMethod() === 'GET') {
-            return $this->renderer->render('@contact/contact');
+            return $this->renderer->render('@contact/contact', compact('page'));
         }
         $data = $request->getParsedBody();
         $validator = (new Validator($data))
@@ -71,7 +80,7 @@ class ContactAction
         } else {
             $this->flash->error('Merci de corriger les erreurs');
             $errors = $validator->getErrors();
-            return $this->renderer->render('@contact/contact', compact('errors'));
+            return $this->renderer->render('@contact/contact', compact('page', 'errors'));
         }
     }
 }

@@ -1,0 +1,40 @@
+{{ csrf_input() }}
+<!-- TODO Afficher les champs utile en fonction de la categorie -->
+<div class="row">
+    <div class="col-md-6">
+        {{ field('skill_name', item.skillName, "Nom de la compétence :") }}
+    </div>
+    <div class="col-md-6">
+        {{ field('skill_level', item.skillLevel, "Niveau de maitrise ('de 1 à 9')", {type: 'number'}, {step: '1', min: '0', max: '9'}) }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        {{ field('picto', item.picto, "Logo (format svg uniquement) :", {type: 'file'}) }}
+    </div>
+    <div class="col-md-6">
+        {% if item.picto %}
+            <img src="{{ asset('uploads/skills/logos/' ~ item.picto) }}" style="width: 10%;">
+        {% endif %}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        {{ field('started_at', item.startedAt, "Date de début", {class: 'cv-datepicker'}) }}
+    </div>
+    <div class="col-md-6">
+        {{ field('ended_at', item.endedAt, "Date de fin", {class: 'cv-datepicker'}) }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        {{ field('place', item.place, "Lieu d'obtention :") }}
+    </div>
+    <div class="col-md-6">
+        {{ field('category_id', item.categoryId, "Catégorie", {options: categories}) }}
+    </div>
+</div>
+
+{{ field('cv_id', cv.cvId, "C.V. de rattachement :", {options: cv}) }}
+
+{{ field('description', item.description, "Description", {type: 'textarea'}) }}

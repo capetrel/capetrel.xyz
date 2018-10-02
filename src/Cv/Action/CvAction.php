@@ -41,12 +41,12 @@ class CvAction
     {
         $user = $this->cvTable->findUser(1);
         $cv = $this->cvTable->findCv(1);
-        $studentSkills = $this->cvTable->findUserCvContentByCategory(1, 'diplomes-formations');
-        $devSkills = $this->cvTable->findUserCvContentByCategory(1, 'programmation-logiciels');
-        $proSkills = $this->cvTable->findUserCvContentByCategory(1, 'experiences-competences');
-        $langSkills = $this->cvTable->findUserCvContentByCategory(1, 'langues');
-        $surveykills = $this->cvTable->findUserCvContentByCategory(1, 'veilles');
-        $socialNetSkills = $this->cvTable->findUserCvContentByCategory(1, 'reseau-sociaux');
+        $studentSkills = $this->cvTable->findUserSkillCvByCategoryDated(1, 'diplomes-formations');
+        $devSkills = $this->cvTable->findDevSkillOrder(1, 'programmation-logiciels');
+        $proSkills = $this->cvTable->findUserSkillCvByCategoryDated(1, 'experiences-competences');
+        $langSkills = $this->cvTable->findUserSkillCvByCategory(1, 'langues');
+        $surveykills = $this->cvTable->findUserSkillCvByCategory(1, 'veilles');
+        $socialNetSkills = $this->cvTable->findUserSkillCvByCategory(1, 'reseau-sociaux');
 
         return $this->renderer->render('@cv/index', compact(
             'user',

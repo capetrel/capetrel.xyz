@@ -1,150 +1,58 @@
 document.addEventListener("DOMContentLoaded", function(){
 
-    function Scroller(options) {
-        this.options = options;
-        this.button = null;
-        this.stop = false;
-    }
-
-    Scroller.prototype.constructor = Scroller;
-
-    Scroller.prototype.createButton = function() {
-
-        this.button = document.createElement('div');
-        this.button.classList.add('scroll-button');
-        this.button.classList.add('scroll-button--hidden');
-        this.button.textContent = "";
-        document.body.appendChild(this.button);
-    }
-
-    Scroller.prototype.init = function() {
-        this.createButton();
-        this.checkPosition();
-        this.click();
-        this.stopListener();
-    }
-
-    Scroller.prototype.scroll = function() {
-        if (this.options.animate == false || this.options.animate == "false") {
-            this.scrollNoAnimate();
-            return;
+    function scrollTo(element, duration) {
+        let e = document.documentElement;
+        if(e.scrollTop===0){
+            let t = e.scrollTop;
+            ++e.scrollTop;
+            e = t+1===e.scrollTop--?e:document.body;
         }
-        if (this.options.animate == "normal") {
-            this.scrollAnimate();
-            return;
-        }
-        if (this.options.animate == "linear") {
-            this.scrollAnimateLinear();
-            return;
-        }
-    }
-    Scroller.prototype.scrollNoAnimate = function() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-    }
-    Scroller.prototype.scrollAnimate = function() {
-        if (this.scrollTop() > 0 && this.stop == false) {
-            setTimeout(function() {
-                this.scrollAnimate();
-                window.scrollBy(0, (-Math.abs(this.scrollTop())/this.options.normal['steps']));
-            }.bind(this), (this.options.normal['ms']));
-        }
-    }
-    Scroller.prototype.scrollAnimateLinear = function() {
-        if (this.scrollTop() > 0 && this.stop == false) {
-            setTimeout(function() {
-                this.scrollAnimateLinear();
-                window.scrollBy(0, -Math.abs(this.options.linear['px']));
-            }.bind(this), this.options.linear['ms']);
-        }
+        scrollToC(e, e.scrollTop, element, duration);
     }
 
-    Scroller.prototype.click = function() {
-
-        this.button.addEventListener("click", function(e) {
-            e.stopPropagation();
-            this.scroll();
-        }.bind(this), false);
-
-        this.button.addEventListener("dblclick", function(e) {
-            e.stopPropagation();
-            this.scrollNoAnimate();
-        }.bind(this), false);
-
+    function scrollToC(element, from, to, duration) {
+        if (duration < 0) return;
+        if(typeof from === "object")from=from.offsetTop;
+        if(typeof to === "object")to=to.offsetTop;
+        scrollToX(element, from, to, 0, 1/duration, 20, easeOutCuaic);
     }
 
-    Scroller.prototype.hide = function() {
-        this.button.classList.add("scroll-button--hidden");
-    }
-
-    Scroller.prototype.show = function() {
-        this.button.classList.remove("scroll-button--hidden");
-    }
-
-    Scroller.prototype.checkPosition = function() {
-        window.addEventListener("scroll", function(e) {
-            if (this.scrollTop() > this.options.showButtonAfter) {
-                this.show();
-            } else {
-                this.hide();
-            }
-        }.bind(this), false);
-    }
-
-    Scroller.prototype.stopListener = function() {
-
-        // stop animation on slider drag
-        let position = this.scrollTop();
-        window.addEventListener("scroll", function(e) {
-            if (this.scrollTop() > position) {
-                this.stopTimeout(200);
-            } else {
-                //...
-            }
-            position = this.scrollTop();
-        }.bind(this, position), false);
-
-        // stop animation on wheel scroll down
-        window.addEventListener("wheel", function(e) {
-            if(e.deltaY > 0) this.stopTimeout(200);
-        }.bind(this), false);
-    }
-
-    Scroller.prototype.stopTimeout = function(ms){
-        this.stop = true;
-        // console.log(this.stop); //
+    function scrollToX(element, x1, x2, t, v, step, operacion) {
+        if (t < 0 || t > 1 || v <= 0) return;
+        element.scrollTop = x1 - (x1-x2)*operacion(t);
+        t += v * step;
         setTimeout(function() {
-            this.stop = false;
-            console.log(this.stop); //
-        }.bind(this), ms);
+            scrollToX(element, x1, x2, t, v, step, operacion);
+        }, step);
     }
 
-    Scroller.prototype.scrollTop = function(){
-        let curentScrollTop;
-        curentScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        return curentScrollTop;
+    function easeOutCuaic(t){
+        t--;
+        return t*t*t+1;
     }
 
+    let birdScrollTop = function () {
 
+        let btnTop = document.querySelector('#go-top');
+        let top = document.querySelector('#top');
+        let btnReveal = function () {
+            if (window.scrollY >= 100) {
+                btnTop.classList.add('visible');
+            }else {
+                btnTop.classList.remove('visible');
+            }
+        };
+        let TopScrollTo = function () {
+            if(window.scrollY !== 0) {
+                scrollTo(top,1000);
+            }
+        };
 
-// ------------------- USE EXAMPLE ---------------------
-// *Set options
-    let options = {
-        'showButtonAfter': 200, // show button after scroling down this amount of px
-        'animate': "normal", // [false|normal|linear] - for false no aditional settings are needed
-        // easy out effect
-        'normal': { // applys only if [animate: normal] - set scroll loop "distanceLeft"/"steps"|"ms"
-            'steps': 15, // more "steps" per loop => slower animation
-            'ms': 1000/60 // less "ms" => quicker animation, more "ms" => snapy
-        },
-        // linear effect
-        'linear': { // applys only if [animate: linear] - set scroll "px"|"ms"
-            'px': 80, // more "px" => quicker your animation gets
-            'ms': 1000/60 // Less "ms" => quicker your animation gets, More "ms" =>
-        },
+        window.addEventListener('scroll', btnReveal);
+        btnTop.addEventListener('click', TopScrollTo);
+
     };
-// *Create new Scroller and run it.
-    let scroll = new Scroller(options);
-    scroll.init();
+
+    birdScrollTop();
 
 });

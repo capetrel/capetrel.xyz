@@ -18,6 +18,8 @@ class QueryBuilder implements \IteratorAggregate
 
     private $order = [];
 
+    private $orderBy;
+
     private $limit;
 
     private $joins;

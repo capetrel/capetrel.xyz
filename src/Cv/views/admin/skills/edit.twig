@@ -1,0 +1,18 @@
+{% extends '@admin/layout.twig' %}
+
+{% block title "Edition d'une compétence" %}
+
+{% block body %}
+    <h1>Éditer la compétence : {{ item.skillName }}</h1>
+
+    <a href="{{ path('cv.admin.show', {slug: slug}) }}" class="btn btn-secondary">Annuler</a>
+
+    <form action="{{ path(routePrefix ~ '.edit', {slug: slug, id: item.id}) }}" method="post" enctype="multipart/form-data">
+
+        {% include viewPath ~ '/form.twig' %}
+
+        <button class="btn btn-primary" type="submit">Éditer</button>
+
+    </form>
+
+{% endblock %}

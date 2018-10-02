@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 120 32" width="120" height="32">
+    <svg id="star-fill-star" viewBox="0 0 12 16" x="0" y="0" width="12" height="16">
+        <path fill="#07b0ab" d="M 6 1 l 1.8 3.8 L 12 5.4 L 8.9 8.3 l 0.7 4.2 L 6 10.6 l -3.8 1.9 l 0.7 -4.2 L 0 5.4 l 4.2 -0.6 L 6 1 z"/>
+    </svg>
+    <svg id="star-fill-star1" viewBox="0 0 12 16" x="12" y="0" width="12" height="16">
+        <path fill="#07b0ab" d="M 6 1 l 1.8 3.8 L 12 5.4 L 8.9 8.3 l 0.7 4.2 L 6 10.6 l -3.8 1.9 l 0.7 -4.2 L 0 5.4 l 4.2 -0.6 L 6 1 z"/>
+    </svg>
+    <svg id="star-fill-star2" viewBox="0 0 12 16" x="24" y="0" width="12" height="16">
+        <path fill="#07b0ab" d="M 6 1 l 1.8 3.8 L 12 5.4 L 8.9 8.3 l 0.7 4.2 L 6 10.6 l -3.8 1.9 l 0.7 -4.2 L 0 5.4 l 4.2 -0.6 L 6 1 z"/>
+    </svg>
+    <svg id="star-fill-star3" viewBox="0 0 12 16" x="36" y="0" width="12" height="16">
+        <path fill="#07b0ab" d="M 6 1 l 1.8 3.8 L 12 5.4 L 8.9 8.3 l 0.7 4.2 L 6 10.6 l -3.8 1.9 l 0.7 -4.2 L 0 5.4 l 4.2 -0.6 L 6 1 z"/>
+    </svg>
+    <svg id="star-fill-star4" viewBox="0 0 12 16" x="48" y="0" width="12" height="16">
+        <path fill="#07b0ab" d="M 6 1 l 1.8 3.8 L 12 5.4 L 8.9 8.3 l 0.7 4.2 L 6 10.6 l -3.8 1.9 l 0.7 -4.2 L 0 5.4 l 4.2 -0.6 L 6 1 z"/>
+    </svg>
+    <svg id="star-empty-star" viewBox="0 0 12 16" x="60" y="0" width="12" height="16">
+        <path fill="#adaba3" d="M 6 1 l 1.8 3.8 L 12 5.4 L 8.9 8.3 l 0.7 4.2 L 6 10.6 l -3.8 1.9 l 0.7 -4.2 L 0 5.4 l 4.2 -0.6 L 6 1 z"/>
+    </svg>
+    <svg id="star-empty-star1" viewBox="0 0 12 16" x="72" y="0" width="12" height="16">
+        <path fill="#adaba3" d="M 6 1 l 1.8 3.8 L 12 5.4 L 8.9 8.3 l 0.7 4.2 L 6 10.6 l -3.8 1.9 l 0.7 -4.2 L 0 5.4 l 4.2 -0.6 L 6 1 z"/>
+    </svg>
+    <svg id="star-empty-star2" viewBox="0 0 12 16" x="84" y="0" width="12" height="16">
+        <path fill="#adaba3" d="M 6 1 l 1.8 3.8 L 12 5.4 L 8.9 8.3 l 0.7 4.2 L 6 10.6 l -3.8 1.9 l 0.7 -4.2 L 0 5.4 l 4.2 -0.6 L 6 1 z"/>
+    </svg>
+    <svg id="star-empty-star3" viewBox="0 0 12 16" x="96" y="0" width="12" height="16">
+        <path fill="#adaba3" d="M 6 1 l 1.8 3.8 L 12 5.4 L 8.9 8.3 l 0.7 4.2 L 6 10.6 l -3.8 1.9 l 0.7 -4.2 L 0 5.4 l 4.2 -0.6 L 6 1 z"/>
+    </svg>
+    <svg id="star-empty-star4" viewBox="0 0 12 16" x="108" y="0" width="12" height="16">
+        <path fill="#adaba3" d="M 6 1 l 1.8 3.8 L 12 5.4 L 8.9 8.3 l 0.7 4.2 L 6 10.6 l -3.8 1.9 l 0.7 -4.2 L 0 5.4 l 4.2 -0.6 L 6 1 z"/>
+    </svg>
+    <svg id="star-fill-star5" viewBox="0 0 12 16" x="0" y="16" width="12" height="16">
+        <path fill="#07b0ab" d="M 6 1 l 1.8 3.8 L 12 5.4 L 8.9 8.3 l 0.7 4.2 L 6 10.6 l -3.8 1.9 l 0.7 -4.2 L 0 5.4 l 4.2 -0.6 L 6 1 z"/>
+    </svg>
+    <svg id="star-fill-star6" viewBox="0 0 12 16" x="12" y="16" width="12" height="16">
+        <path fill="#07b0ab" d="M 6 1 l 1.8 3.8 L 12 5.4 L 8.9 8.3 l 0.7 4.2 L 6 10.6 l -3.8 1.9 l 0.7 -4.2 L 0 5.4 l 4.2 -0.6 L 6 1 z"/>
+    </svg>
+    <svg id="star-fill-star7" viewBox="0 0 12 16" x="24" y="16" width="12" height="16">
+        <path fill="#07b0ab" d="M 6 1 l 1.8 3.8 L 12 5.4 L 8.9 8.3 l 0.7 4.2 L 6 10.6 l -3.8 1.9 l 0.7 -4.2 L 0 5.4 l 4.2 -0.6 L 6 1 z"/>
+    </svg>
+    <svg id="star-fill-star8" viewBox="0 0 12 16" x="36" y="16" width="12" height="16">
+        <path fill="#07b0ab" d="M 6 1 l 1.8 3.8 L 12 5.4 L 8.9 8.3 l 0.7 4.2 L 6 10.6 l -3.8 1.9 l 0.7 -4.2 L 0 5.4 l 4.2 -0.6 L 6 1 z"/>
+    </svg>
+    <svg id="star-half-star" viewBox="0 0 12 16" x="48" y="14.7" width="12" height="16">
+        <path fill="#07b0ab" d="M 4.2 6.1 L 0.1 6.7 L 3 9.6 L 2.3 13.6 L 6 11.6 L 6 2.3 Z"/>
+        <path fill="#adaba3" d="M 11.9 6.7 L 7.8 6.1 L 6 2.3 L 6 11.6 L 9.6 13.6 L 8.9 9.6 Z"/>
+    </svg>
+    <svg id="star-empty-star5" viewBox="0 0 12 16" x="60" y="16" width="12" height="16">
+        <path fill="#adaba3" d="M 6 1 l 1.8 3.8 L 12 5.4 L 8.9 8.3 l 0.7 4.2 L 6 10.6 l -3.8 1.9 l 0.7 -4.2 L 0 5.4 l 4.2 -0.6 L 6 1 z"/>
+    </svg>
+    <svg id="star-empty-star6" viewBox="0 0 12 16" x="72" y="16" width="12" height="16">
+        <path fill="#adaba3" d="M 6 1 l 1.8 3.8 L 12 5.4 L 8.9 8.3 l 0.7 4.2 L 6 10.6 l -3.8 1.9 l 0.7 -4.2 L 0 5.4 l 4.2 -0.6 L 6 1 z"/>
+    </svg>
+    <svg id="star-empty-star7" viewBox="0 0 12 16" x="84" y="16" width="12" height="16">
+        <path fill="#adaba3" d="M 6 1 l 1.8 3.8 L 12 5.4 L 8.9 8.3 l 0.7 4.2 L 6 10.6 l -3.8 1.9 l 0.7 -4.2 L 0 5.4 l 4.2 -0.6 L 6 1 z"/>
+    </svg>
+    <svg id="star-empty-star8" viewBox="0 0 12 16" x="96" y="16" width="12" height="16">
+        <path fill="#adaba3" d="M 6 1 l 1.8 3.8 L 12 5.4 L 8.9 8.3 l 0.7 4.2 L 6 10.6 l -3.8 1.9 l 0.7 -4.2 L 0 5.4 l 4.2 -0.6 L 6 1 z"/>
+    </svg>
+</svg>

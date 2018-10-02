@@ -3,18 +3,6 @@ namespace App\Cv\Entity;
 
 class Skill
 {
-
-    /*
-        s.skill_name,
-        s.skill_level,
-        s.picto,
-        s.started_at,
-        s.ended_at,
-        s.description,
-        s.place,
-        ca.c_name
-     */
-
     /**
      * @var int
      */
@@ -26,7 +14,7 @@ class Skill
     private $skillName;
 
     /**
-     * @var string
+     * @var mixed
      */
     private $skillLevel;
 
@@ -82,9 +70,9 @@ class Skill
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getSkillName(): string
+    public function getSkillName(): ?string
     {
         return $this->skillName;
     }
@@ -98,47 +86,65 @@ class Skill
     }
 
     /**
-     * @return string
+     * @return int|null
      */
-    public function getSkillLevel(): string
+    public function getSkillLevel(): ?int
     {
-        return $this->skillLevel;
+        if (is_string($this->skillLevel) && empty($this->skillLevel)) {
+            return null;
+        }
+        return (int)$this->skillLevel;
     }
 
     /**
-     * @param string $skillLevel
+     * @param mixed|null $skillLevel
      */
-    public function setSkillLevel(string $skillLevel): void
+    public function setSkillLevel($skillLevel)
     {
-        $this->skillLevel = $skillLevel;
+        if (is_string($skillLevel) && $skillLevel === '' || $skillLevel === 0) {
+            $this->skillLevel = null;
+        }
+        $this->skillLevel = (int)$skillLevel;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPicto(): string
+    public function getPicto(): ?string
     {
-        return DIRECTORY_SEPARATOR .
-            'uploads' . DIRECTORY_SEPARATOR .
-            'skill' . DIRECTORY_SEPARATOR .
-            'logos' . DIRECTORY_SEPARATOR .
-            $this->picto;
+        /*
+        if (!is_null($this->picto)) {
+            return DIRECTORY_SEPARATOR .
+                'uploads' . DIRECTORY_SEPARATOR .
+                'skill' . DIRECTORY_SEPARATOR .
+                'logos' . DIRECTORY_SEPARATOR .
+                $this->picto;
+
+        }
+        */
+        return $this->picto;
     }
 
     /**
-     * @param string $picto
+     * @param string|null $picto
      */
-    public function setPicto(string $picto): void
+    public function setPicto(?string $picto): void
     {
+        if (!is_null($picto)) {
+            $this->picto = $picto;
+        }
         $this->picto = $picto;
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime|null
      */
-    public function getStartedAt(): \DateTime
+    public function getStartedAt(): ?\DateTime
     {
-        return $this->startedAt;
+        if (!is_null($this->startedAt) && !is_string($this->startedAt)) {
+            return $this->startedAt;
+        }
+        return null;
     }
 
     /**
@@ -146,7 +152,7 @@ class Skill
      */
     public function setStartedAt($datetime): void
     {
-        if (is_string($datetime)) {
+        if (is_string($datetime) && !empty($datetime)) {
             $this->startedAt = new \DateTime($datetime);
         } else {
             $this->startedAt = $datetime;
@@ -158,7 +164,10 @@ class Skill
      */
     public function getEndedAt(): ?\DateTime
     {
-        return $this->endedAt;
+        if (!is_null($this->endedAt) && !is_string($this->endedAt)) {
+            return $this->endedAt;
+        }
+        return null;
     }
 
     /**
@@ -166,7 +175,7 @@ class Skill
      */
     public function setEndedAt($datetime): void
     {
-        if (is_string($datetime)) {
+        if (is_string($datetime) && !empty($datetime)) {
             $this->endedAt = new \DateTime($datetime);
         } else {
             $this->endedAt = $datetime;
@@ -174,41 +183,49 @@ class Skill
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      */
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): void
     {
-        $this->description = $description;
+        if (!is_null($description)) {
+            $this->description = $description;
+        } else {
+            $this->description = null;
+        }
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPlace(): string
+    public function getPlace(): ?string
     {
         return $this->place;
     }
 
     /**
-     * @param string $place
+     * @param string|null $place
      */
-    public function setPlace(string $place): void
+    public function setPlace(?string $place): void
     {
-        $this->place = $place;
+        if (!is_null($place)) {
+            $this->place = $place;
+        } else {
+            $this->place = null;
+        }
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getCategoryId(): int
+    public function getCategoryId(): ?int
     {
         return $this->categoryId;
     }

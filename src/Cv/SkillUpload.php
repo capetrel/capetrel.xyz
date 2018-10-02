@@ -10,6 +10,4 @@ class SkillUpload extends Upload
         'uploads'. DIRECTORY_SEPARATOR .
         'skills'. DIRECTORY_SEPARATOR .
         'logos';
-
-
 }

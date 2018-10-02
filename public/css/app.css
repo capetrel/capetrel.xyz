@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Chau+Philomene+One");
+@import url('https://fonts.googleapis.com/css?family=Bad+Script');
 
 /****************************************************************************/
 /****************************** HTML STYLE *******************************/
@@ -118,9 +119,9 @@ blockquote cite{
 }
 
 .content p, form, address{
-    padding-top: 2vh;
-    padding-left: 2vw;
-    padding-bottom: 5vh;
+    margin-top: 2vh;
+    margin-left: 2vw;
+    margin-bottom: 5vh;
 }
 
 .content h1{
@@ -227,13 +228,6 @@ blockquote cite{
     display: none;
 }
 
-/*
-.menu-item {
-    width: 45px;
-    height: 45px;
-
-}
-*/
 .icon{
     height: 35%;
     width: 35%;
@@ -443,16 +437,16 @@ select.form-control:focus::-ms-value {
 }
 
 .btn{
-    width: 80px;
-    height: 40px;
-    padding: 6px 0 6px 0;
+    width: auto;
+    height: 45px;
+    padding: 6px 30px 6px 30px;
     border: none;
     font-family: 'Chau Philomene One', sans-serif;
     border-radius: 90% 5% 90% 33%;
     color: #f0f0f0;
+    cursor: pointer;
     -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
     -o-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    /* transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; */
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
 
@@ -484,7 +478,65 @@ select.form-control:focus::-ms-value {
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }
 
+.blackboard{
+    height: 60vh;
+    width: 59vw;
+    background-color: #1a1a1a;
+    border: solid 5px #c3996d;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.board-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.foot-blackboard{
+    height: auto;
+    width: 48vw;
+}
+
+.foot-blackboard > svg{
+    height: 10vh;
+    width: 48vw;
+}
+
+.blackboard > .form-group > label{
+    color: #fff;
+    font-family: 'Bad Script', cursive;
+}
+
+.blackboard > .form-group > .form-control{
+    width: 90%;
+    padding: 0.2rem 1rem;
+    font-family: 'Bad Script', cursive;
+    font-size: 1em;
+    line-height: 1.5;
+    color: #f4f4f4;
+    border-image: url(../img/input-border.svg) calc(40 / 108 * 100%) calc(1 / 10* 100%) / 0 0 4 4;
+    border-radius: 0;
+    background: none;
+    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    /* transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; */
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.blackboard > .form-group > .form-control:focus {
+    color: #f4f4f4;
+    outline: 0;
+    -webkit-box-shadow: -0.1rem 0.1rem 0.2rem 0 #f4f4f4;
+    box-shadow: -0.1rem 0.1rem 0.2rem 0 rgba(254, 254, 254, 0.6);
+}
+
 .dev-list{
+    padding-top: 2vh;
+    padding-left: 2vw;
+    padding-bottom: 5vh;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -492,14 +544,44 @@ select.form-control:focus::-ms-value {
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
     flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.logo-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .dev-logo{
-    height: 15vh;
+    height: 9vh;
+    margin-top: 2vh;
 }
+
+.rating-static {
+    width: 60px;
+    height: 16px;
+    display: block;
+    background: url('../img/stars-sprite.svg') 0 0 no-repeat;
+}
+/* .rating-0 { background-position: -60px 0; } */
+.rating-0  { background-position: -48px -16px; }
+.rating-1 { background-position: -48px 0; }
+.rating-2 { background-position: -36px -16px; }
+.rating-3 { background-position: -36px 0; }
+.rating-4 { background-position: -24px -16px; }
+.rating-5 { background-position: -24px 0; }
+.rating-6 { background-position: -12px -16px; }
+.rating-7 { background-position: -12px 0; }
+.rating-8 { background-position: 0 -16px; }
+.rating-9 { background-position: 0 0; }
 
 /* to top button */
 .scroll-button{
+    background: no-repeat url("../img/to-top.svg");
+    position: fixed;
+    border: 0;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     font-size: 1.2rem;
@@ -509,31 +591,26 @@ select.form-control:focus::-ms-value {
     height: 60px;
     right: 20px;
     top: 20px;
-    visibility: visible;
+    visibility: hidden;
     filter: alpha(opacity=50);
     opacity: 0.5;
     cursor: pointer;
-    transition: all 1.2s;
-    -webkit-transition: all 1.2s;
-    -moz-transition: all 1.2s;
-    -o-transition: all 1.2s;
-}
-
-.scroll-button{
-    background: no-repeat url("../img/to-top.svg");
-    position: fixed;
-    border: 0;
+    transition: all 0.7s;
+    -webkit-transition: all 0.7s;
+    -moz-transition: all 0.7s;
+    -o-transition: all 0.7s;
 }
 
 .scroll-button:hover{
     filter: alpha(opacity=100);
-    opacity: 1;
+    opacity: 0.5;
 }
 
-.scroll-button--hidden{
+.visible{
     filter: alpha(opacity=0);
-    opacity: 0;
-    visibility: hidden;
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.2s;
 }
 
 /* Animate to top button */

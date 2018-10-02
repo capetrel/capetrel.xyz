@@ -20,6 +20,11 @@ class Cv
     private $cvName;
 
     /**
+     * @var string
+     */
+    private $cvSlug;
+
+    /**
      * @return int|null
      */
     public function getId(): ?int
@@ -74,6 +79,22 @@ class Cv
     public function setUserId(int $userId): void
     {
         $this->userId = $userId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCvSlug(): string
+    {
+        return $this->cvSlug;
+    }
+
+    /**
+     * @param string $cvSlug
+     */
+    public function setCvSlug(string $cvSlug): void
+    {
+        $this->cvSlug = $cvSlug;
     }
 
 }

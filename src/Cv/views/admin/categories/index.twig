@@ -1,13 +1,13 @@
 {% extends '@admin/layout.twig' %}
 
-{% block title "Administrer les cvs" %}
+{% block title "Administrer les catégorie" %}
 
 {% block body %}
     <h1>Administration du site</h1>
 
     <p class="text-right">
         <a class="btn btn-primary" href="{{ path(routePrefix ~'.create') }}">
-            Ajouter un cv
+            Ajouter une catégorie
         </a>
     </p>
 
@@ -15,8 +15,8 @@
 
         <thead>
         <tr>
-            <td>Nom du C.V.</td>
-            <td>Auteur du C.V.</td>
+            <td>Titre</td>
+            <td>Actions</td>
         </tr>
         </thead>
 
@@ -24,11 +24,11 @@
         {% set token_input = csrf_input() %}
         {% for item in items %}
             <tr>
-                <td>{{ item.name }}</td>
-                <td>{{ item.userId }}</td>
+                <td>{{ item.cName }}</td>
                 <td>
                     <a href="{{ path(routePrefix ~'.edit', {id: item.id}) }}" class="btn btn-primary">Éditer</a>
                     <form style="display: inline" action="{{ path(routePrefix ~'.delete', {id: item.id}) }}" method="post" onsubmit="return confirm('êtes vous sur ?')">
+                        {{ csrf_input() }}
                         <input type="hidden" name="_method" value="DELETE">
                         <button class="btn btn-danger">
                             Supprimer

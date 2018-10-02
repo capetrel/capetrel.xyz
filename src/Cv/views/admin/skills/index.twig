@@ -3,22 +3,27 @@
 {% block title "Administrer les compétences" %}
 
 {% block body %}
-    <h1>Administration des compétences</h1>
-
+    <h1>Administration des compétences sur le CV :</h1>
+    <h4>{{ cv.cvName }} par {{ author.firstName }} {{ author.lastName }}</h4>
     <p class="text-right">
-        <a class="btn btn-primary" href="{{ path(routePrefix ~'.create') }}">
+        <a class="btn btn-primary" href="{{ path(routePrefix ~'.create', {slug: cv.cvSlug, id: item.id}) }}">
             Ajouter une compétence
         </a>
     </p>
-
-    {{ dump(items) }}
 
     <table class="table table-striped">
 
         <thead>
         <tr>
             <td>Nom de la compétence</td>
-            <td>etc .....</td>
+            <td>Niveau de maitrise</td>
+            <td>Logo</td>
+            <td>Date de début</td>
+            <td>Date de fin</td>
+            <td>Description</td>
+            <td>Lieu</td>
+            <td>Catégorie</td>
+            <td>Actions</td>
         </tr>
         </thead>
 
@@ -26,11 +31,21 @@
         {% set token_input = csrf_input() %}
         {% for item in items %}
             <tr>
-                <td>{{ item.name }}</td>
-                <td>{{ item.userId }}</td>
+                <td>{{ item.skillName }}</td>
+                {% if item.skillLevel > 0 %}
+                    <td>{{ item.skillLevel }}</td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+                <td>{{ item.picto }}</td>
+                <td>{{ item.startedAt.format('d/m/Y') }}</td>
+                <td>{{ item.endedAt.format('d/m/Y') }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.place }}</td>
+                <td>{{ item.cName }}</td>
                 <td>
-                    <a href="{{ path(routePrefix ~'.edit', {id: item.id}) }}" class="btn btn-primary">Éditer</a>
-                    <form style="display: inline" action="{{ path(routePrefix ~'.delete', {id: item.id}) }}" method="post" onsubmit="return confirm('êtes vous sur ?')">
+                    <a href="{{ path(routePrefix ~'.edit', {slug: cv.cvSlug, id: item.id}) }}" class="btn btn-primary">Éditer</a>
+                    <form style="display: inline" action="{{ path(routePrefix ~'.delete', {slug: cv.cvSlug, id: item.id}) }}" method="post" onsubmit="return confirm('êtes vous sur ?')">
                         <input type="hidden" name="_method" value="DELETE">
                         <button class="btn btn-danger">
                             Supprimer
@@ -38,13 +53,11 @@
                         {{ token_input | raw }}
                     </form>
                 </td>
-
             </tr>
         {% endfor %}
         </tbody>
 
     </table>
-
-    {{ paginate(items, routePrefix ~'.index') }}
+    {# {{ paginate(items, routePrefix ~'.index', {slug: cv.cvSlug}) }} #}
 
 {% endblock %}

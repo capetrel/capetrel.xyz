@@ -110,6 +110,7 @@ class CrudAction
     public function edit(ServerRequestInterface $request)
     {
         $id = (int)$request->getAttribute('id');
+        $slug = $request->getAttribute('slug');
         $item = $this->table->find($id);
 
         if ($request->getMethod() === 'POST') {
@@ -118,10 +119,21 @@ class CrudAction
                 $this->table->update($id, $this->prePersist($request, $item));
                 $this->postPersist($request, $item);
                 $this->flash->success($this->flashMessages['edit']);
+                if (isset($slug)) {
+                    $params['slug'] = $slug;
+                    return $this->redirect('cv.admin.show', $params);
+                }
                 return $this->redirect($this->routePrefix . '.index');
             }
             $errors = $validator->getErrors();
             Hydrator::hydrate($request->getParsedBody(), $item);
+        }
+
+        if (isset($slug)) {
+            return $this->renderer->render(
+                $this->viewPath . '/edit',
+                $this->formParams(compact('item', 'slug', 'errors'))
+            );
         }
 
         return $this->renderer->render(
@@ -137,17 +149,30 @@ class CrudAction
      */
     public function create(ServerRequestInterface $request)
     {
+        $slug = $request->getAttribute('slug');
         $item = $this->getNewEntity();
+
         if ($request->getMethod() === 'POST') {
             $validator = $this->getValidator($request);
             if ($validator->isValid()) {
                 $this->table->insert($this->prePersist($request, $item));
                 $this->postPersist($request, $item);
                 $this->flash->success($this->flashMessages['create']);
+                if (isset($slug)) {
+                    $params['slug'] = $slug;
+                    return $this->redirect('cv.admin.show', $params);
+                }
                 return $this->redirect($this->routePrefix . '.index');
             }
             Hydrator::hydrate($request->getParsedBody(), $item);
             $errors = $validator->getErrors();
+        }
+
+        if (isset($slug)) {
+            return $this->renderer->render(
+                $this->viewPath . '/create',
+                $this->formParams(compact('item', 'slug', 'errors'))
+            );
         }
 
         return $this->renderer->render(
@@ -158,7 +183,12 @@ class CrudAction
 
     public function delete(ServerRequestInterface $request)
     {
+        $slug = $request->getAttribute('slug');
         $this->table->delete($request->getAttribute('id'));
+        if (isset($slug)) {
+            $params['slug'] = $slug;
+            return $this->redirect('cv.admin.show', $params);
+        }
         return $this->redirect($this->routePrefix . '.index');
     }
 

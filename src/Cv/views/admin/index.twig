@@ -1,9 +1,9 @@
 {% extends '@admin/layout.twig' %}
 
-{% block title "Administrer les cvs" %}
+{% block title "Administrer les cv" %}
 
 {% block body %}
-<h1>Administration du site</h1>
+<h1>Administration des CV</h1>
 
 <p class="text-right">
     <a class="btn btn-primary" href="{{ path(routePrefix ~'.create') }}">
@@ -17,6 +17,7 @@
     <tr>
         <td>Nom du C.V.</td>
         <td>Auteur du C.V.</td>
+        <td>url du C.V.</td>
         <td>Contenu du CV</td>
         <td>Actions</td>
     </tr>
@@ -25,10 +26,12 @@
     <tbody>
     {% set token_input = csrf_input() %}
     {% for item in items %}
+
     <tr>
         <td>{{ item.cvName }}</td>
         <td>{{ item.firstName }} {{ item.lastName }}</td>
-        <td><a href="admin/cv/skills" class="btn btn-light">Voir</a></td>
+        <td>{{ item.cvSlug }}</td>
+        <td><a href="{{ path(routePrefix ~'.show', {slug: item.cvSlug}) }}" class="btn btn-light">Voir</a></td>
         <td>
             <a href="{{ path(routePrefix ~'.edit', {id: item.id}) }}" class="btn btn-primary">Éditer</a>
             <form style="display: inline" action="{{ path(routePrefix ~'.delete', {id: item.id}) }}" method="post" onsubmit="return confirm('êtes vous sur ?')">
@@ -45,5 +48,7 @@
     </tbody>
 
 </table>
+
+{{ paginate(items, routePrefix ~'.index', {slug: item.cvSlug}) }}
 
 {% endblock %}

@@ -122,9 +122,30 @@ class Validator
     public function isNumeric(string $key):self
     {
         $value = $this->getValue($key);
+        if (!empty($value)) {
+            if (!is_numeric($value)) {
+                $this->addError($key, 'numeric');
+            }
+        }
+        return $this;
+    }
 
-        if (!is_numeric($value)) {
-            $this->addError($key, 'numeric');
+    /**
+     * Verifie que l'élément est numérique et qu'il est dans l'intervalle définit
+     * @param string $key
+     * @param int $min
+     * @param int $max
+     * @return Validator
+     */
+    public function numericRange(string $key, int $min, int $max):self
+    {
+        $value = $this->getValue($key);
+        if (!empty($value)) {
+            if (!is_numeric($value) || $value < $min) {
+                $this->addError($key, 'numeric_range', [$min, $max]);
+            } elseif (!is_numeric($value) || $value > $max) {
+                $this->addError($key, 'numeric_range', [$min, $max]);
+            }
         }
         return $this;
     }
@@ -142,6 +163,43 @@ class Validator
         $errors = \DateTime::getLastErrors();
         if ($errors['error_count'] > 0 || $errors['warning_count'] > 0 || $date === false) {
             $this->addError($key, 'datetime', [$format]);
+        }
+        return $this;
+    }
+
+    /**
+     * Vérifie que la date est au bon format (MYSQL freindly)
+     * @param string $key
+     * @param string $format
+     * @return Validator
+     */
+    public function isDate(string $key, string $format = 'Y-m-d'): self
+    {
+        $value = $this->getValue($key);
+        $date = \DateTime::createFromFormat($format, $value);
+        $errors = \DateTime::getLastErrors();
+        if ($errors['error_count'] > 0 || $errors['warning_count'] > 0 || $date === false) {
+            $this->addError($key, 'date', [$format]);
+        }
+        return $this;
+    }
+
+    /**
+     * Autorise une date vide, sinon une date au bon format (MYSQL freindly)
+     * @param string $key
+     * @param string $format
+     * @return Validator
+     */
+    public function emptyOrIsDate(string $key, string $format = 'Y-m-d H:i:s'): self
+    {
+        $value = $this->getValue($key);
+        if ($value === '') {
+            return $this;
+        }
+        $date = \DateTime::createFromFormat($format, $value);
+        $errors = \DateTime::getLastErrors();
+        if ($errors['error_count'] > 0 || $errors['warning_count'] > 0 || $date === false) {
+            $this->addError($key, 'date', [$format]);
         }
         return $this;
     }
@@ -225,6 +283,9 @@ class Validator
     {
         /** @var UploadedFileInterface $file */
         $file = $this->getValue($key);
+        if (is_string($file)) {
+            return $this;
+        }
         if ($file === null || $file->getError() !== UPLOAD_ERR_OK) {
             $this->addError($key, 'uploaded');
         }

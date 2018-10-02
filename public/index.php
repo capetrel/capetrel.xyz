@@ -1,13 +1,14 @@
 <?php
 
 use App\Home\Action\HomeAction;
-use App\Page\PageModule;
 use Framework\App;
 use App\Admin\AdminModule;
 use App\Auth\AuthModule;
 use App\Account\AccountModule;
+use App\Page\PageModule;
 use App\Home\HomeModule;
 use App\Cv\CvModule;
+use App\Portfolio\PortfolioModule;
 use App\Contact\ContactModule;
 use App\Framework\Middleware\TrailingSlashMiddleware;
 use App\Auth\ForbiddenMiddleware;
@@ -32,6 +33,7 @@ $app = (new App(['config/config.php', 'config.php']))
     ->addModule(PageModule::class)
     ->addModule(HomeModule::class)
     ->addModule(CvModule::class)
+    ->addModule(PortfolioModule::class)
     ->addModule(ContactModule::class);
 
 $container = $app->getContainer();
@@ -48,7 +50,7 @@ $app->pipe(Whoops::class)
     )
     ->pipe(MethodMiddleware::class)
     ->pipe(RendererRequestMiddleware::class)
-    ->pipe(CsrfMiddleware::class)
+    //->pipe(CsrfMiddleware::class)
     ->pipe(RouterMiddleware::class)
     ->pipe(RouteDispatcherMiddleware::class)
     ->pipe(NotFoundMiddleware::class);

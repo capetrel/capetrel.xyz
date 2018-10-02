@@ -5,25 +5,33 @@
     <h1>{{ studentSkills[0].cName }}</h1>
     {% for skill in studentSkills  %}
         <p>
-            {{ skill.endedAt }} : {{ skill.skillName }} <br>
-            {{ skill.description }}. {{ skill.place }}
+            <strong>{{ skill.endedAt }} : </strong>{{ skill.skillName }} <br>
+            {{ skill.description }} - {{ skill.place }}
         </p>
     {% endfor %}
 
     <h1>{{ devSkills[0].cName }}</h1>
-    <p class="dev-list">
+    <div class="dev-list">
     {% for skill in devSkills  %}
         {% if skill.picto %}
-            <img class="dev-logo" src="{{ asset('uploads/skills/logos/' ~ skill.picto) }}" alt="logo {{ skill.skillName }}">
-
+            <div class="logo-box">
+                <img class="dev-logo" src="{{ asset('uploads/skills/logos/' ~ skill.picto) }}" alt="logo {{ skill.skillName }}">
+                <div class="rating">
+                    <span class="rating-static rating-{{ skill.skillLevel }}"></span>
+                </div>
+            </div>
         {% else %}
-            <i>
-                {{ skill.skillName }} - {{ skill.skillLevel }},&nbsp;
-            </i>
+            <div class="logo-box">
+                    {{ skill.skillName }}
+                <div class="rating">
+                    <span class="rating-static rating-{{ skill.skillLevel }}"></span>
+                </div>
+            </div>
+
         {% endif %}
 
     {% endfor %}
-    </p>
+    </div>
 
     <h1>{{ cv.cvName }}</h1>
     <address>
@@ -37,8 +45,8 @@
     <h1>{{ proSkills[0].cName }}</h1>
     {% for skill in proSkills  %}
         <p>
-            {{ skill.startedAt }} - {{ skill.endedAt }} : {{ skill.skillName }} <br>
-            {{ skill.description }}. {{ skill.place }}.
+            <strong>{{ skill.startedAt }} - {{ skill.endedAt }} : </strong>{{ skill.skillName }} <br>
+            {{ skill.description }} - {{ skill.place }}.
         </p>
 
     {% endfor %}

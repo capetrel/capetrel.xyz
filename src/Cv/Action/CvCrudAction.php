@@ -25,7 +25,7 @@ class CvCrudAction extends CrudAction
     /**
      * @var CvTable
      */
-    protected $cvTable;
+    protected $table;
 
     /**
      * @var RendererInterface
@@ -34,14 +34,13 @@ class CvCrudAction extends CrudAction
 
     public function __construct(
         RendererInterface $renderer,
-        CvTable $cvTable,
+        CvTable $table,
         UserTable $userTable,
         Router $router,
         FlashService $flash
     ) {
-        parent::__construct($renderer, $cvTable, $router, $flash);
+        parent::__construct($renderer, $table, $router, $flash);
         $this->renderer = $renderer;
-        $this->cvTable = $cvTable;
         $this->userTable = $userTable;
     }
 
@@ -89,5 +88,4 @@ class CvCrudAction extends CrudAction
 
         return $validator;
     }
-
 }
