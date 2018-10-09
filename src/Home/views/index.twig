@@ -9,12 +9,16 @@
         {{ page.content }}
     </p>
 
-    <!-- TODO creer un bouton avec requete AJAX pour changer de proverbe  -->
-    <h1>Générateur de proverbes</h1>
-    <blockquote>
+    <h1>Générateur de citations</h1>
+
+    <blockquote id="display-quote">
         <p>{{ item.proverb }}</p>
         <br>
         <cite>- De {{ item.proverbAuthor }}.</cite>
     </blockquote>
+    <p>
+        <a class="btn btn-primary" id="new-quote" href="/">Citations</a>
+    </p>
+
 
 {% endblock %}

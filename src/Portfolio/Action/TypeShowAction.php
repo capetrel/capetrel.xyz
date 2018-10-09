@@ -7,17 +7,19 @@ use App\Portfolio\Table\PortfolioTable;
 use App\Portfolio\Table\TypeTable;
 use Psr\Http\Message\ServerRequestInterface;
 
-class PortfolioAction
+class TypeShowAction
 {
 
     /**
      * @var RendererInterface
      */
     private $renderer;
+
     /**
      * @var PortfolioTable
      */
     private $portfolioTable;
+
     /**
      * @var TypeTable
      */
@@ -37,9 +39,11 @@ class PortfolioAction
 
     public function __invoke(ServerRequestInterface $request)
     {
-        $images = $this->portfolioTable->findAll();
+        $type = $this->typeTable->findBy('t_slug', $request->getAttribute('slug'));
+        $images = $this->portfolioTable->findForCategory($type->getId())->fetchAll();
         $types = $this->typeTable->findAll();
 
-        return $this->renderer->render('@portfolio/index', compact('images', 'types'));
+        return $this->renderer->render('@portfolio/index', compact('images', 'types', 'type'));
     }
+
 }

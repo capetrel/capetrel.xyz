@@ -9,23 +9,23 @@ class QueryTest extends DatabaseTestCase
 
     public function testSimpleQuery()
     {
-        $query = (new QueryBuilder())->from('posts')->select('name');
-        $this->assertEquals('SELECT name FROM posts', (string)$query);
+        $query = (new QueryBuilder())->from('portfolio')->select('name');
+        $this->assertEquals('SELECT name FROM portfolio', (string)$query);
     }
 
     public function testQueryWithWhere()
     {
         $query = (new QueryBuilder())
-            ->from('posts', 'p')
+            ->from('portfolio', 'p')
             ->where('a = :a OR b = :b', 'c = :c');
 
         $query2 = (new QueryBuilder())
-            ->from('posts', 'p')
+            ->from('portfolio', 'p')
             ->where('a = :a OR b = :b')
             ->where('c = :c');
 
-        $this->assertEquals('SELECT * FROM posts as p WHERE (a = :a OR b = :b) AND (c = :c)', (string)$query);
-        $this->assertEquals('SELECT * FROM posts as p WHERE (a = :a OR b = :b) AND (c = :c)', (string)$query2);
+        $this->assertEquals('SELECT * FROM portfolio as p WHERE (a = :a OR b = :b) AND (c = :c)', (string)$query);
+        $this->assertEquals('SELECT * FROM portfolio as p WHERE (a = :a OR b = :b) AND (c = :c)', (string)$query2);
     }
 
     public function testFetchAll()
@@ -35,13 +35,13 @@ class QueryTest extends DatabaseTestCase
         $this->seedDatabase($pdo);
 
         $posts = (new QueryBuilder($pdo))
-            ->from('posts', 'p')
+            ->from('portfolio', 'p')
             ->count();
 
         $this->assertEquals(100, $posts);
 
         $posts = (new QueryBuilder($pdo))
-            ->from('posts', 'p')
+            ->from('portfolio', 'p')
             ->where('p.id < :number')
             ->params(['number' => 30])
             ->count();
@@ -56,7 +56,7 @@ class QueryTest extends DatabaseTestCase
         $this->seedDatabase($pdo);
 
         $posts = (new QueryBuilder($pdo))
-            ->from('posts', 'p')
+            ->from('portfolio', 'p')
             ->where('p.id < :number')
             ->params(['number' => 5])
             ->into(Demo::class)
@@ -72,7 +72,7 @@ class QueryTest extends DatabaseTestCase
         $this->seedDatabase($pdo);
 
         $posts = (new QueryBuilder($pdo))
-            ->from('posts', 'p')
+            ->from('portfolio', 'p')
             ->into(Demo::class)
             ->fetchAll();
 
@@ -85,24 +85,24 @@ class QueryTest extends DatabaseTestCase
     public function testJoinQuery()
     {
         $query = (new QueryBuilder())
-            ->from('posts', 'p')
+            ->from('portfolio', 'p')
             ->select('name')
-            ->join('categories as c', 'c.id = p.category_id')
-            ->join('categories as c2', 'c2.id = p.category_id', 'inner');
+            ->join('types as c', 'c.id = p.category_id')
+            ->join('types as c2', 'c2.id = p.category_id', 'inner');
         $this->assertEquals('SELECT name FROM'.
-            ' posts as p'.
-            ' LEFT JOIN categories as c ON c.id = p.category_id'.
-            ' INNER JOIN categories as c2 ON c2.id = p.category_id', (string)$query);
+            ' portfolio as p'.
+            ' LEFT JOIN types as c ON c.id = p.category_id'.
+            ' INNER JOIN types as c2 ON c2.id = p.category_id', (string)$query);
     }
 
     public function testOrderLimitQuery()
     {
         $query = (new QueryBuilder())
-            ->from('posts', 'p')
+            ->from('portfolio', 'p')
             ->select('name')
             ->order('id DESC')
             ->order('name ASC')
             ->limit(10, 5);
-        $this->assertEquals('SELECT name FROM posts as p ORDER BY id DESC, name ASC LIMIT 5, 10', (string)$query);
+        $this->assertEquals('SELECT name FROM portfolio as p ORDER BY id DESC, name ASC LIMIT 5, 10', (string)$query);
     }
 }

@@ -55,10 +55,10 @@ class PostTableTest extends DatabaseTestCase
     {
         $this->postTable->insert(['name' => 'Salut', 'slug' => 'demo']);
         $this->postTable->insert(['name' => 'Salut2', 'slug' => 'demo-2']);
-        $count = $this->postTable->getPdo()->query('SELECT COUNT(id) FROM posts')->fetchColumn();
+        $count = $this->postTable->getPdo()->query('SELECT COUNT(id) FROM portfolio')->fetchColumn();
         $this->assertEquals(2, (int)$count);
         $this->postTable->delete($this->postTable->getPdo()->lastInsertId());
-        $newcount = $this->postTable->getPdo()->query('SELECT COUNT(id) FROM posts')->fetchColumn();
+        $newcount = $this->postTable->getPdo()->query('SELECT COUNT(id) FROM portfolio')->fetchColumn();
         $this->assertEquals(1, (int)$newcount);
     }
 }

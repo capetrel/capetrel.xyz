@@ -45,7 +45,7 @@ class RouterTest extends TestCase
         $request = new ServerRequest('GET', '/blog/mon-slug-8');
         $this->router->get('/blog', function () {
             return 'azezea';
-        }, 'posts');
+        }, 'portfolio');
         $this->router->get('/blog/{slug:[a-z0-9\-]+}-{id:\d+}', function () {
             return 'hello';
         }, 'post.show');
@@ -87,7 +87,7 @@ class RouterTest extends TestCase
     {
         $this->router->get('/blog', function () {
             return 'azezea';
-        }, 'posts');
+        }, 'portfolio');
         $this->router->get('/blog/{slug:[a-z0-9\-]+}-{id:\d+}', function () {
             return 'hello';
         }, 'post.show');
@@ -99,7 +99,7 @@ class RouterTest extends TestCase
     {
         $this->router->get('/blog', function () {
             return 'azezea';
-        }, 'posts');
+        }, 'portfolio');
         $this->router->get('/blog/{slug:[a-z0-9\-]+}-{id:\d+}', function () {
             return 'hello';
         }, 'post.show');

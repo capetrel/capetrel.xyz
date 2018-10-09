@@ -1,17 +1,15 @@
-# root
-
 # protection de la lecture des répertoires
-Options -Indexes
+# Options -Indexes
 # suivre les liens symbolique
-Options +FollowSymlinks
+# Options +FollowSymlinks
 
 # BEGIN rewrite
-<IfModule mod_rewrite.c>
-   RewriteEngine on
-   RewriteCond %{HTTP_HOST} ^capetrel.xyz.test
-   RewriteCond %{REQUEST_URI} !^/public
-   RewriteRule ^(.*)$ /public/$1 [L]
-</IfModule>
+# <IfModule mod_rewrite.c>
+#    RewriteEngine on
+#    RewriteCond %{HTTP_HOST} ^capetrel.xyz.test
+#    RewriteCond %{REQUEST_URI} !^/
+#    RewriteRule ^(.*)$ /public/index.php [L]
+# </IfModule>
 
 # KILL THEM ETAGS
 #Header unset ETag

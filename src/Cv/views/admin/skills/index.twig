@@ -37,7 +37,11 @@
                 {% else %}
                     <td></td>
                 {% endif %}
-                <td>{{ item.picto }}</td>
+                {% if item.picto %}
+                    <td><img src="{{ asset('uploads/skills/logos/' ~ item.picto) }}" style="width: 100%;"></td>
+                {% else %}
+                    <td></td>
+                {% endif %}
                 <td>{{ item.startedAt.format('d/m/Y') }}</td>
                 <td>{{ item.endedAt.format('d/m/Y') }}</td>
                 <td>{{ item.description }}</td>

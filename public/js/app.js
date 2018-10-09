@@ -55,4 +55,30 @@ document.addEventListener("DOMContentLoaded", function(){
 
     birdScrollTop();
 
+    let link = document.querySelector('#new-quote');
+    let actualQuote = document.querySelector('#display-quote');
+
+    if(link){
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            let httpRequest = new XMLHttpRequest();
+            httpRequest.open('GET', this.getAttribute('href'), true);
+            httpRequest.responseType = "document";
+            httpRequest.send();
+            httpRequest.onreadystatechange = function(){
+                if(httpRequest.readyState === 4 ) {
+                    let responseQuote = httpRequest.response.querySelector('#display-quote');
+                    while (actualQuote.hasChildNodes()) {
+                        actualQuote.removeChild(actualQuote.firstChild);
+                    }
+                    while (responseQuote.hasChildNodes()){
+                        actualQuote.appendChild(responseQuote.firstChild);
+                    }
+                }
+            };
+
+        });
+    }
+
+
 });

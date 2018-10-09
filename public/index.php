@@ -50,7 +50,7 @@ $app->pipe(Whoops::class)
     )
     ->pipe(MethodMiddleware::class)
     ->pipe(RendererRequestMiddleware::class)
-    //->pipe(CsrfMiddleware::class)
+    ->pipe(CsrfMiddleware::class)
     ->pipe(RouterMiddleware::class)
     ->pipe(RouteDispatcherMiddleware::class)
     ->pipe(NotFoundMiddleware::class);

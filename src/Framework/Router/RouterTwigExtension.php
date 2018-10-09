@@ -25,8 +25,11 @@ class RouterTwigExtension extends \Twig_Extension
         ];
     }
 
-    public function asset(string $path): string
+    public function asset(?string $path): ?string
     {
+        if (is_null($path)) {
+            return null;
+        }
         $url = '/';
         return $url . $path;
     }

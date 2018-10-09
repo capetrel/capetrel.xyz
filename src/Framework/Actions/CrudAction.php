@@ -151,7 +151,6 @@ class CrudAction
     {
         $slug = $request->getAttribute('slug');
         $item = $this->getNewEntity();
-
         if ($request->getMethod() === 'POST') {
             $validator = $this->getValidator($request);
             if ($validator->isValid()) {

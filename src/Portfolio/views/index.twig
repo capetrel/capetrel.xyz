@@ -1,11 +1,60 @@
 {% extends 'layout.twig' %}
 
+{% block title %}
+
+    {% if type %}
+        Catégorie : {{ type.tName }}
+    {% else %}
+        Portfolio
+    {% endif %}
+
+{% endblock %}
+
 {% block body %}
 
-    <h1>Portfolio</h1>
+    {% if type %}
+        <h1>Catégorie : {{ type.tName }}</h1>
+    {% else %}
+        <h1>Mon Portfolio</h1>
+    {% endif %}
 
-    <p>
-        {{ hello }}
-    </p>
+    <div class="portfolio">
+    {% for image in images %}
+        <div class="ih-item square effect6 from_top_and_bottom">
+            {% if image.link %}
+                <a href="{{ image.link }}" target="_blank">
+            {% else %}
+                <a href="#"><!-- modale ? -->
+            {% endif %}
+                <div class="img">
+                    <img src="{{ image.thumb }}" alt="{{ image.pTitle }}">
+                </div>
+                <div class="info">
+                    <h3>{{ image.pTitle }}</h3>
+                    <p class="portfolio-desc">{{ image.pDescription }}</p>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+    </div>
+
+    <ul class="portfolio-categories">
+        {% if type %}
+            <li>
+                <a class="category-link" href="{{ path('portfolio') }}">Tous</a>
+            </li>
+        {% else %}
+            <li>
+                <a class="category-link active" href="{{ path('portfolio') }}">Tous</a>
+            </li>
+        {% endif %}
+
+        {% for t in types %}
+            <li>
+                <a class="category-link {% if t.id == type.id %}active{% endif %}" href="{{ path('portfolio.type', {slug: t.tSlug}) }}">{{ t.tName }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
 
 {% endblock %}

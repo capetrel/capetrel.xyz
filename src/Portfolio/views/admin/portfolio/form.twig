@@ -1,0 +1,38 @@
+{{ csrf_input() }}
+
+<div class="row">
+    <div class="col-md-6">
+        {{ field('p_title', item.pTitle, "Titre de la réalisation :") }}
+    </div>
+    <div class="col-md-6">
+        {{ field('p_slug', item.pSlug, "slug de la réalisation :") }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        {{ field('p_description', item.pDescription, "Description :", {type: 'textarea'}) }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        {% if item.image is not empty %}
+            <img src="{{ asset(item.thumb) }}" style="width: 30%;">
+        {% endif %}
+    </div>
+    <div class="col-md-6">
+        {{ field('image', item.image, "Image :", {type: 'file'}) }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        {{ field('link', item.link, "lien vers la réalisation :") }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        {{ field('type_id', item.typeId, "Types :", {options: types}) }}
+    </div>
+    <div class="col-md-6">
+        {{ field('user_id', item.userId, "Auteur :", {options: users}) }}
+    </div>
+</div>

@@ -8,7 +8,7 @@ class CreateSkillsTable extends AbstractMigration
     public function change()
     {
 
-        $this->table('categories')
+        $this->table('types')
             ->addColumn('c_name', 'string')
             ->addColumn('c_level', 'string')
             ->addIndex('slug', ['unique' => true])
@@ -24,7 +24,7 @@ class CreateSkillsTable extends AbstractMigration
             ->addColumn('place', 'string')
             ->addColumn('category_id', 'integer')
             ->addColumn('cv_id', 'integer')
-            ->addForeignKey('category_id', 'categories', 'id', [
+            ->addForeignKey('category_id', 'types', 'id', [
                 'delete' => 'SET NULL'
             ])
             ->addForeignKey('cv_id', 'cv', 'id', [
