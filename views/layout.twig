@@ -47,8 +47,11 @@
                 <polygon class="foliage-1" points="0,0 0,185.6 410,0 "/>
             </svg>
         </header>
-
-        <main>
+        <div id="sun"></div>
+        <div id="cloud"></div>
+        <main id="weather">
+            <div id="particles-js"></div>
+            <canvas id="canvas"></canvas>
             <aside class="main-left">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 107 492">
                     <rect class="trunk-1" width="107" height="492"/>
@@ -183,8 +186,8 @@
 
         <div id="go-top" class="scroll-button"></div>
 
-        <script src="{{ asset('js/app.js') }}"></script>
-
     </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

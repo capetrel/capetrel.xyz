@@ -5,4 +5,5 @@ memory
 /config.php
 /tmp
 /public/uploads
+/public/js/weather-info
 /downloads
