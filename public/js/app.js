@@ -31,6 +31,35 @@ document.addEventListener("DOMContentLoaded", function(){
         });
     }
 
+    let modal = document.getElementById('modal');
+    let modalImg = document.getElementById("modalImg");
+    let modalTitle = document.getElementById("modalTitle");
+    let modalDesc = document.getElementById("modalDesc");
+
+    let works = document.getElementsByClassName('work');
+
+    for (let i = 0; i < works.length; i++) {
+        let img = works[i];
+        img.onclick = function() {
+            modal.style.display = "block";
+            let i = img.childNodes[1].childNodes[1];
+            let t = img.childNodes[3].childNodes[1];
+            let d = img.childNodes[3].childNodes[3];
+            modalImg.src = i.src.replace('_thumb', '');
+            modalTitle.innerHTML = t.innerHTML;
+            modalDesc.innerHTML = d.innerHTML;
+        }
+    }
+
+    let span = document.getElementsByClassName("close")[0];
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    };
+
+    modal.onclick = function () {
+        modal.style.display = "none";
+    };
     function build_url(city, countryCode){
 
         return "http://api.openweathermap.org/data/2.5/weather"

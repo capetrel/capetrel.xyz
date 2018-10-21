@@ -4,10 +4,10 @@
  * précise l'emplacement des vues et les classes à injecter en dépendences.
  */
 
+use Framework\Router;
 use App\Framework\Middleware\CsrfMiddleware;
 use App\Framework\Renderer\RendererInterface;
 use App\Framework\Renderer\TwigRendererFactory;
-use Framework\Router;
 use App\Framework\Router\RouterFactory;
 use App\Framework\Router\RouterTwigExtension;
 use App\Framework\Session\PhpSession;
@@ -42,7 +42,7 @@ return[
         get(FormExtension::class),
         get(CsrfExtension::class),
         get(ModuleExtension::class),
-        get(PriceExtension::class)
+        get(PriceExtension::class),
     ],
     SessionInterface::class => autowire(PhpSession::class),
     CsrfMiddleware::class => autowire()->constructor(get(SessionInterface::class)),

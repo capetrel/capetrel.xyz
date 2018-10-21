@@ -3,7 +3,7 @@
 {% block title %}
 
     {% if type %}
-        Catégorie : {{ type.tName }}
+       Réalisations, catégorie : {{ type.tName }}
     {% else %}
         Portfolio
     {% endif %}
@@ -17,44 +17,247 @@
     {% else %}
         <h1>Mon Portfolio</h1>
     {% endif %}
+    <div class="gallery">
 
-    <div class="portfolio">
-    {% for image in images %}
-        <div class="ih-item square effect6 from_top_and_bottom">
-            {% if image.link %}
-                <a href="{{ image.link }}" target="_blank">
+        <ul class="portfolio-categories">
+            {% if type %}
+                <li>
+                    <a class="category-link" href="{{ path('portfolio') }}" title="Toutes les réalisations">
+                        <svg id="icon-home" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93 93">
+                            <path class="icon-bg" d="M76,93H17C7.7,93,0,85.3,0,76V17C0,7.7,7.7,0,17,0h59c9.3,0,17,7.7,17,17v59C93,85.3,85.3,93,76,93z"/>
+                            <g>
+                                <polygon class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" points="63.7,23.9 46.6,14.3 29.6,23.9 12.5,33.7 19.7,33.7 19.7,78.7 73.3,78.7 73.3,33.7 80.5,33.7 	"/>
+                                <rect x="37.2" y="49.7" class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" width="16.4" height="29.1"/>
+                            </g>
+                        </svg>
+                    </a>
+                </li>
             {% else %}
-                <a href="#"><!-- modale ? -->
+                <li>
+                    <a class="category-link active" href="{{ path('portfolio') }}" title="Toutes les réalisations">
+                        <svg id="icon-home" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93 93">
+                            <path class="icon-bg active" d="M76,93H17C7.7,93,0,85.3,0,76V17C0,7.7,7.7,0,17,0h59c9.3,0,17,7.7,17,17v59C93,85.3,85.3,93,76,93z"/>
+                            <g>
+                                <polygon class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" points="63.7,23.9 46.6,14.3 29.6,23.9 12.5,33.7 19.7,33.7 19.7,78.7 73.3,78.7 73.3,33.7 80.5,33.7 	"/>
+                                <rect x="37.2" y="49.7" class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" width="16.4" height="29.1"/>
+                            </g>
+                        </svg>
+                    </a>
+                </li>
             {% endif %}
-                <div class="img">
-                    <img src="{{ image.thumb }}" alt="{{ image.pTitle }}">
+
+            {% for t in types %}
+                <li>
+                    <a class="category-link {% if t.id == type.id %}active{% endif %}" href="{{ path('portfolio.type', {slug: t.tSlug}) }}" title="Classer par réalisations {{ t.tName }}">
+                        {% if t.tName == "Web" %}
+                            <svg id="icon-web" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93 93">
+                                <path class="icon-bg {% if t.id == type.id %}active{% endif %}" d="M76,93.1H17c-9.4,0-17-7.6-17-17v-59c0-9.4,7.7-17,17-17h59c9.3,0,17,7.7,17,17v59C93,85.5,85.4,93.1,76,93.1z"/>
+                                <g>
+                                    <g>
+                                        <path class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" d="M69.2,46.8c0,7.4-1.5,14.4-4.3,20.8c-5.9-1.1-12-1.6-18.2-1.6c-6.4,0-12.7,0.6-18.8,1.7
+				c-2.8-6.4-4.4-13.5-4.4-20.9c0-7.1,1.4-13.8,4-20c6.2,1.2,12.7,1.8,19.2,1.8c6.3,0,12.6-0.6,18.6-1.7C67.8,33,69.2,39.7,69.2,46.8
+				z"/>
+                                        <path class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" d="M76.6,24.2c-3.7,1.1-7.5,2-11.3,2.7c-2.7-6.5-6.7-12.3-11.6-17.1C63,11.6,71.1,16.9,76.6,24.2z"/>
+                                        <path class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" d="M84,46.6c0,8.9-3.1,17.1-8.3,23.5c-3.5-1-7.2-1.9-10.9-2.6c2.8-6.4,4.3-13.4,4.3-20.8c0-7-1.4-13.7-3.9-19.8
+				c3.8-0.7,7.6-1.6,11.3-2.7C81.2,30.5,84,38.2,84,46.6z"/>
+                                        <path class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" d="M75.7,70.1c-5.4,6.7-12.9,11.4-21.6,13.2c4.5-4.5,8.2-9.9,10.8-15.8C68.6,68.2,72.2,69.1,75.7,70.1z"/>
+                                        <path class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" d="M46.7,65.9c-6.4,0-12.7,0.6-18.8,1.7c-2.8-6.4-4.4-13.5-4.4-20.9c0-7.1,1.4-13.8,4-20
+				c6.2,1.2,12.7,1.8,19.2,1.8c6.3,0,12.6-0.6,18.6-1.7c2.5,6.1,3.9,12.8,3.9,19.8c0,7.4-1.5,14.4-4.3,20.8
+				C59,66.5,52.9,65.9,46.7,65.9z"/>
+                                        <path class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" d="M27.9,67.7c-3.6,0.7-7.1,1.5-10.5,2.5C12.1,63.7,9,55.5,9,46.6c0-8.4,2.8-16.2,7.5-22.5c3.6,1.1,7.2,2,11,2.7
+				c-2.6,6.1-4,12.9-4,20C23.5,54.2,25,61.3,27.9,67.7z"/>
+                                        <path class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" d="M65.3,26.9c-6,1.1-12.2,1.7-18.6,1.7V9.1c2.4,0,4.7,0.2,7,0.7C58.6,14.6,62.6,20.4,65.3,26.9z"/>
+                                        <path class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" d="M64.9,67.5c-2.6,5.9-6.3,11.3-10.8,15.8c-2.4,0.5-4.9,0.8-7.4,0.8V65.9C52.9,65.9,59,66.5,64.9,67.5z"/>
+                                        <path class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" d="M46.7,65.9v18.2c-0.1,0-0.1,0-0.2,0c-2.8,0-5.4-0.3-8-0.9c-4.4-4.5-8.1-9.7-10.6-15.6
+				C34,66.5,40.2,65.9,46.7,65.9z"/>
+                                        <path class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" d="M38.5,83.2c-8.5-1.8-15.9-6.6-21.1-13.1c3.4-1,6.9-1.9,10.5-2.5C30.4,73.5,34.1,78.8,38.5,83.2z"/>
+                                        <path class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" d="M46.7,65.9c-6.4,0-12.7,0.6-18.8,1.7c-2.8-6.4-4.4-13.5-4.4-20.9c0-7.1,1.4-13.8,4-20
+				c6.2,1.2,12.7,1.8,19.2,1.8c6.3,0,12.6-0.6,18.6-1.7c2.5,6.1,3.9,12.8,3.9,19.8c0,7.4-1.5,14.4-4.3,20.8
+				C59,66.5,52.9,65.9,46.7,65.9z"/>
+                                        <path class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" d="M38.9,9.9c-4.9,4.8-8.8,10.5-11.5,16.9c-3.7-0.7-7.4-1.6-11-2.7C21.9,16.9,29.8,11.7,38.9,9.9z"/>
+                                        <path class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" d="M46.7,9.1v19.5c-6.6,0-13-0.6-19.2-1.8c2.7-6.4,6.6-12.2,11.5-16.9c2.5-0.5,5-0.8,7.6-0.8
+				C46.6,9.1,46.6,9.1,46.7,9.1z"/>
+                                        <path class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" d="M46.7,84.1"/>
+                                        <line class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" x1="46.7" y1="65.9" x2="46.7" y2="28.6"/>
+                                    </g>
+                                    <g>
+                                        <rect x="12.2" y="37.6" class="icon-color" width="68.5" height="19"/>
+                                        <g>
+                                            <path fill="#333E48" d="M19.7,40.4l1.8,6.9c0.4,1.5,0.8,2.9,1,4.3h0.1c0.3-1.4,0.8-2.8,1.2-4.3l2.2-6.9h2.1l2.1,6.8
+					c0.5,1.6,0.9,3.1,1.2,4.4h0.1c0.2-1.4,0.6-2.8,1-4.4l1.9-6.8h2.4L32.5,54h-2.2l-2.1-6.5C27.7,46,27.3,44.6,27,43H27
+					c-0.3,1.6-0.8,3-1.2,4.5L23.5,54h-2.2l-4.1-13.6H19.7z"/>
+                                            <path fill="#333E48" d="M40.7,40.4l1.8,6.9c0.4,1.5,0.8,2.9,1,4.3h0.1c0.3-1.4,0.8-2.8,1.2-4.3l2.2-6.9h2.1l2.1,6.8
+					c0.5,1.6,0.9,3.1,1.2,4.4h0.1c0.2-1.4,0.6-2.8,1-4.4l1.9-6.8H58L53.6,54h-2.2l-2.1-6.5C48.8,46,48.4,44.6,48,43H48
+					c-0.3,1.6-0.8,3-1.2,4.5L44.6,54h-2.2l-4.1-13.6H40.7z"/>
+                                            <path fill="#333E48" d="M61.8,40.4l1.8,6.9c0.4,1.5,0.8,2.9,1,4.3h0.1c0.3-1.4,0.8-2.8,1.2-4.3l2.2-6.9h2.1l2.1,6.8
+					c0.5,1.6,0.9,3.1,1.2,4.4h0.1c0.2-1.4,0.6-2.8,1-4.4l1.9-6.8H79L74.6,54h-2.2l-2.1-6.5c-0.5-1.5-0.9-2.9-1.2-4.5H69
+					c-0.3,1.6-0.8,3-1.2,4.5L65.6,54h-2.2l-4.1-13.6H61.8z"/>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        {% elseif  t.tName == "Print" %}
+                            <svg id="icon-print" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93 93">
+                                <path class="icon-bg {% if t.id == type.id %}active{% endif %}" d="M76,93.8H17c-9.4,0-17-7.7-17-17v-59c0-9.4,7.7-17,17-17h59c9.3,0,17,7.6,17,17v59C93,86.2,85.3,93.8,76,93.8z"/>
+                                <rect x="9" y="20.8" class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" width="74.6" height="53"/>
+                                <path fill="#333E48" d="M74.7,29.5H14.3c-1.3,0-2.3-1-2.3-2.3v0c0-1.3,1-2.3,2.3-2.3h60.4c1.3,0,2.3,1,2.3,2.3v0C77,28.5,76,29.5,74.7,29.5z"/>
+                                <rect x="12.1" y="34.7" fill="#333E48" width="25.2" height="16"/>
+                                <g>
+                                    <rect x="40.4" y="34.7" fill="#333E48" width="36.5" height="1.5"/>
+
+                                    <rect x="40.4" y="41.4" fill="#333E48" width="36.5" height="1.5"/>
+
+                                    <rect x="40.4" y="48.1" fill="#333E48" width="36.5" height="1.5"/>
+
+                                    <rect x="12.1" y="54.2" fill="#333E48" width="64.8" height="1.5"/>
+
+                                    <rect x="12.1" y="61.5" fill="#333E48" width="64.8" height="1.5"/>
+
+                                    <rect x="12.1" y="68.1" fill="#333E48" width="64.8" height="1.5"/>
+                                </g>
+                            </svg>
+                        {% elseif  t.tName == "Illustration" %}
+                            <svg  id="icon-draw" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93 93">
+                                <path class="icon-bg {% if t.id == type.id %}active{% endif %}" d="M76,93H17C7.7,93,0,85.3,0,76V17C0,7.7,7.7,0,17,0h59c9.3,0,17,7.7,17,17v59C93,85.3,85.3,93,76,93z"/>
+                                <rect x="15.5" y="10.5" class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" width="59" height="73"/>
+                                <g>
+                                    <path fill="#333E48" d="M31.7,22.1c-2.9,1.7-6.2,5.1-5.8,8.9c0.2,1.6,0.8,1.8,1.4,3c0.3,0.2,0.5,0.4,0.8,0.6c1.9,1.1,2.7,3.1,2.3,5.9
+                                        c-0.1,1.2-0.7,2.3-1.1,3.4c-2.8,9-1.2,19.7,8.1,23.9c1.7,0.8,3.3-1.8,1.5-2.6c-4.2-1.9-6.9-5.4-7.8-10c-1-5.2,1.1-9.2,2.1-14
+                                        c0.5-2.2,0.5-4.7-0.7-6.7c-0.4-0.6-1-1-1.5-1.6c-2.7-3.4-1.4-6.2,2.1-8.2C34.9,23.7,33.4,21.1,31.7,22.1L31.7,22.1z"/>
+                                </g>
+                                <g>
+                                    <path class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" d="M85.5,33.4L44.7,64.1l-6.5,1.6l3.3-5.8l40.8-30.7c0,0-0.4,1.2,0.8,2.7C84.2,33.5,85.5,33.4,85.5,33.4z"/>
+                                    <path class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" d="M42.2,59.4c0,0-0.4,1.2,0.8,2.7c1.1,1.5,2.4,1.5,2.4,1.5"/>
+                                    <path class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" d="M85.7,33.3c0,0,0.4-1.2-0.8-2.7c-1.1-1.5-2.4-1.5-2.4-1.5"/>
+                                </g>
+                            </svg>
+                        {% elseif  t.tName == "Animation/vidéo" %}
+                            <svg id="icon-anim" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93 93">
+                                <path class="icon-bg {% if t.id == type.id %}active{% endif %}" d="M76,93H17C7.7,93,0,85.3,0,76V17C0,7.7,7.7,0,17,0h59c9.3,0,17,7.7,17,17v59C93,85.3,85.3,93,76,93z"/>
+                                <polygon class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" points="71.5,46.5 46.5,60.9 21.5,75.4 21.5,46.5 21.5,17.6 46.5,32.1 "/>
+                            </svg>
+                        {% elseif  t.tName == "Programmation" %}
+                            <svg id="icon-dev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93 93">
+                                <path class="icon-bg {% if t.id == type.id %}active{% endif %}" d="M76,93H17C7.7,93,0,85.3,0,76V17C0,7.7,7.7,0,17,0h59c9.3,0,17,7.7,17,17v59C93,85.3,85.3,93,76,93z"/>
+                                <g>
+                                    <g>
+                                        <path class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" d="M74.8,54.9H18.2c-0.9,0-1.6-0.7-1.6-1.6V18.4c0-0.9,0.7-1.6,1.6-1.6h56.5c0.9,0,1.6,0.7,1.6,1.6v34.8
+				C76.4,54.2,75.7,54.9,74.8,54.9z"/>
+                                        <path class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" d="M75.6,54.9H17.4c-0.4,0-0.8-0.3-0.8-0.8v-6.6c0-0.4,0.3-0.8,0.8-0.8h58.3c0.4,0,0.8,0.3,0.8,0.8v6.6
+				C76.4,54.6,76.1,54.9,75.6,54.9z"/>
+                                        <path class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" d="M74.8,76.2H18.2c-0.9,0-1.6-0.7-1.6-1.6V63.5c0-0.9,0.7-1.6,1.6-1.6h56.5c0.9,0,1.6,0.7,1.6,1.6v11.1
+				C76.4,75.5,75.7,76.2,74.8,76.2z"/>
+                                        <path fill="#333E48" d="M21.2,66.6H20c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C22,66.2,21.6,66.6,21.2,66.6z"/>
+                                        <path fill="#333E48" d="M25.5,66.6h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C26.3,66.2,26,66.6,25.5,66.6z"/>
+                                        <path fill="#333E48" d="M29.8,66.6h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C30.6,66.2,30.3,66.6,29.8,66.6z"/>
+                                        <path fill="#333E48" d="M34.1,66.6H33c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C35,66.2,34.6,66.6,34.1,66.6z"/>
+                                        <path fill="#333E48" d="M38.5,66.6h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C39.3,66.2,38.9,66.6,38.5,66.6z"/>
+                                        <path fill="#333E48" d="M42.8,66.6h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C43.6,66.2,43.2,66.6,42.8,66.6z"/>
+                                        <path fill="#333E48" d="M47.1,66.6h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C47.9,66.2,47.5,66.6,47.1,66.6z"/>
+                                        <path fill="#333E48" d="M51.4,66.6h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C52.2,66.2,51.9,66.6,51.4,66.6z"/>
+                                        <path fill="#333E48" d="M55.7,66.6h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C56.5,66.2,56.2,66.6,55.7,66.6z"/>
+                                        <path fill="#333E48" d="M60,66.6h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8H60c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C60.9,66.2,60.5,66.6,60,66.6z"/>
+                                        <path fill="#333E48" d="M68.7,66.6h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C69.5,66.2,69.1,66.6,68.7,66.6z"/>
+                                        <path fill="#333E48" d="M73,66.6h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8H73c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C73.8,66.2,73.4,66.6,73,66.6z"/>
+                                        <path fill="#333E48" d="M21.2,70.4H20c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C22,70.1,21.6,70.4,21.2,70.4z"/>
+                                        <path fill="#333E48" d="M25.5,70.4h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C26.3,70.1,26,70.4,25.5,70.4z"/>
+                                        <path fill="#333E48" d="M29.8,70.4h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C30.6,70.1,30.3,70.4,29.8,70.4z"/>
+                                        <path fill="#333E48" d="M34.1,70.4H33c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C35,70.1,34.6,70.4,34.1,70.4z"/>
+                                        <path fill="#333E48" d="M38.5,70.4h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C39.3,70.1,38.9,70.4,38.5,70.4z"/>
+                                        <path fill="#333E48" d="M42.8,70.4h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C43.6,70.1,43.2,70.4,42.8,70.4z"/>
+                                        <path fill="#333E48" d="M47.1,70.4h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C47.9,70.1,47.5,70.4,47.1,70.4z"/>
+                                        <path fill="#333E48" d="M51.4,70.4h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C52.2,70.1,51.9,70.4,51.4,70.4z"/>
+                                        <path fill="#333E48" d="M55.7,70.4h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C56.5,70.1,56.2,70.4,55.7,70.4z"/>
+                                        <path fill="#333E48" d="M60,70.4h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8H60c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C60.9,70.1,60.5,70.4,60,70.4z"/>
+                                        <path fill="#333E48" d="M68.7,70.4h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C69.5,70.1,69.1,70.4,68.7,70.4z"/>
+                                        <path fill="#333E48" d="M73,70.4h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8H73c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C73.8,70.1,73.4,70.4,73,70.4z"/>
+                                        <path fill="#333E48" d="M21.2,74.3H20c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C22,73.9,21.6,74.3,21.2,74.3z"/>
+                                        <path fill="#333E48" d="M25.5,74.3h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C26.3,73.9,26,74.3,25.5,74.3z"/>
+                                        <path fill="#333E48" d="M29.8,74.3h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C30.6,73.9,30.3,74.3,29.8,74.3z"/>
+                                        <path fill="#333E48" d="M51.4,74.3H33c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h18.5c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C52.2,73.9,51.9,74.3,51.4,74.3z"/>
+                                        <path fill="#333E48" d="M55.7,74.3h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C56.5,73.9,56.2,74.3,55.7,74.3z"/>
+                                        <path fill="#333E48" d="M60,74.3h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8H60c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C60.9,73.9,60.5,74.3,60,74.3z"/>
+                                        <path fill="#333E48" d="M64.4,74.3h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C65.2,73.9,64.8,74.3,64.4,74.3z"/>
+                                        <path fill="#333E48" d="M68.7,74.3h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8h1.2c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C69.5,73.9,69.1,74.3,68.7,74.3z"/>
+                                        <path fill="#333E48" d="M73,74.3h-1.2c-0.5,0-0.8-0.4-0.8-0.8v-1.2c0-0.5,0.4-0.8,0.8-0.8H73c0.5,0,0.8,0.4,0.8,0.8v1.2
+				C73.8,73.9,73.4,74.3,73,74.3z"/>
+                                        <g>
+                                            <path fill="#333E48" d="M29.4,33.5l11.4-5.9v1.7l-9.6,4.8v0l9.6,4.8v1.7l-11.4-5.9V33.5z"/>
+                                            <path fill="#333E48" d="M42.4,41.7l6.8-17.7h1.7L44,41.7H42.4z"/>
+                                            <path fill="#333E48" d="M63.8,34.9l-11.4,5.8V39l9.6-4.8v0l-9.6-4.8v-1.7l11.4,5.8V34.9z"/>
+                                        </g>
+                                    </g>
+                                    <rect x="42.2" y="54.9" class="icon-color" stroke="#333e48" stroke-width="3" stroke-linejoin="round" width="8.7" height="7"/>
+                                </g>
+                            </svg>
+                        {% else %}
+                            {{ t.tName }}
+                        {% endif %}
+
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <div class="portfolio">
+            {% for image in images %}
+                <div class="ih-item square effect6 from_top_and_bottom">
+                    {% if image.link %}
+                    <a href="{{ image.link }}" target="_blank">
+                        {% else %}
+                        <a class="work">
+                            {% endif %}
+                            <div class="img">
+                                <img id="imgSrc" src="{{ image.thumb }}" alt="{{ image.pTitle }}">
+                            </div>
+                            <div class="info">
+                                <h3 id="imgTitle">{{ image.pTitle }}</h3>
+                                <p id="imgDesc" class="portfolio-desc">{{ image.pDescription }}</p>
+                            </div>
+                        </a>
                 </div>
-                <div class="info">
-                    <h3>{{ image.pTitle }}</h3>
-                    <p class="portfolio-desc">{{ image.pDescription }}</p>
-                </div>
-            </a>
+            {% endfor %}
         </div>
-    {% endfor %}
+
     </div>
 
-    <ul class="portfolio-categories">
-        {% if type %}
-            <li>
-                <a class="category-link" href="{{ path('portfolio') }}">Tous</a>
-            </li>
-        {% else %}
-            <li>
-                <a class="category-link active" href="{{ path('portfolio') }}">Tous</a>
-            </li>
-        {% endif %}
-
-        {% for t in types %}
-            <li>
-                <a class="category-link {% if t.id == type.id %}active{% endif %}" href="{{ path('portfolio.type', {slug: t.tSlug}) }}">{{ t.tName }}</a>
-            </li>
-        {% endfor %}
-    </ul>
-
+    <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImg">
+        <h3 id="modalTitle"></h3>
+        <div id="modalDesc"></div>
+    </div>
 
 {% endblock %}

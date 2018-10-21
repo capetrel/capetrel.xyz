@@ -109,7 +109,7 @@ blockquote cite{
 #sun{
     position: absolute;
     top: 2vh;
-    right: 2vw;
+    right: 10vw;
     background-color: #f6d23d;
     width: 4rem;
     height: 4rem;
@@ -231,7 +231,7 @@ blockquote cite{
 }
 
 .menu{
-    z-index: 20;
+    z-index: 15;
     margin-left: 22vw;
     width: 60%;
     list-style: none;
@@ -274,10 +274,12 @@ blockquote cite{
 
 .circle-icon-active{
     fill: #BDBBBB;
+    cursor: default;
 }
 
 .content-icon-active{
     fill: #00AFAA;
+    cursor: default;
 }
 
 .nav div{
@@ -298,6 +300,75 @@ blockquote cite{
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: baseline;
+}
+
+.gallery{
+    display: flex;
+    flex-direction: row;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 25;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 25%;
+    max-width: 700px;
+}
+
+.close {
+    position: absolute;
+    top: 10vh;
+    left: 20vw;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modalDesc, #modalTitle {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+}
+
+.modal-content, #modalDesc, #modalTitle {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
 }
 
 .root-2{
@@ -405,12 +476,13 @@ blockquote cite{
 .rating-9 { background-position: 0 0; }
 
 .portfolio-categories{
-    list-style: none;
-    display: inline-flex;
-}
+     list-style: none;
+ }
 
 .portfolio-categories > li{
-    margin-left: 1rem;
+    width: 4vh;
+    height: 4vh;
+    margin-bottom: 1vh;
 }
 
 .portfolio-categories > li > .category-link{
@@ -418,13 +490,31 @@ blockquote cite{
     color: #333e48;
 }
 
-.portfolio-categories > li > .category-link:hover{
+.portfolio-categories > li > .category-link:hover .icon-bg{
     text-decoration: none;
     color: #00afaa;
+    fill: #00afaa;
+}
+.portfolio-categories > li > .category-link:hover .icon-color{
+    text-decoration: none;
+    color: #00afaa;
+    fill: #bdbbbb;
 }
 
 .portfolio-categories > li > .category-link.active{
     color: #00afaa;
+}
+
+.icon-bg{
+    fill: #64BDBA;
+}
+
+.icon-color{
+    fill: #f4f4f4;
+}
+
+.icon-bg.active{
+    fill: #bdbbbb;
 }
 
 /* to top button */
@@ -445,7 +535,7 @@ blockquote cite{
     filter: alpha(opacity=50);
     opacity: 0.5;
     cursor: pointer;
-    z-index: 30;
+    z-index: 15;
     transition: all 0.7s;
     -webkit-transition: all 0.7s;
     -moz-transition: all 0.7s;
@@ -823,7 +913,7 @@ select.form-control:focus::-ms-value {
     font-size: 0.6em;
     margin: 0;
     position: relative;
-    color: #f4f4f4;
+    color: #333e48;
     padding: 5px 5px 5px;
     text-align: center;
     -webkit-transition: all 0.35s 0.1s linear;
@@ -937,6 +1027,18 @@ select.form-control:focus::-ms-value {
 /****************************** MEDIA QUERIES *******************************/
 /****************************************************************************/
 @media screen and (max-width: 380px) {
+
+    .gallery {
+        flex-direction: column;
+    }
+
+    .portfolio-categories{
+        display: inline-flex;
+    }
+
+    .portfolio-categories > li{
+        margin-left: 1vh;
+    }
 
     .menu-open-button {
         background: #00afaa;

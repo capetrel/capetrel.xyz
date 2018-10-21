@@ -35,6 +35,7 @@
     <title>{% block title "capetrel.xyz" %}</title>
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
 </head>
 
 <body class="scrollbar" id="style-1" onload="window.location.hash = 'footer'"  >
@@ -103,8 +104,8 @@
                         <a href="/" title="Aller à la page d'accueil">
                             <svg id="home" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45">
                                 <circle fill="#333E48" cx="21" cy="22" r="20.6"/>
-                                <circle class="circle-icon" fill="#00AFAA" cx="22.2" cy="20.9" r="20.6"/>
-                                <polygon class="content-icon" fill="#BDBBBB" stroke="#333E48" stroke-width="1.9484" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+                                <circle class="circle-icon{{ is_subpath('home.index') or page.moduleName == 'home' ? '-active' }}" fill="#00AFAA" cx="22.2" cy="20.9" r="20.6"/>
+                                <polygon class="content-icon{{ is_subpath('home.index') or page.moduleName == 'home' ? '-active' }}" fill="#BDBBBB" stroke="#333E48" stroke-width="1.9484" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
                                     29.8,9.1 22,4.7 14.2,9.1 6.4,13.6 9.7,13.6 9.7,34.2 34.2,34.2 34.2,13.6 37.5,13.6 	"/>
                                 <rect x="17.7" y="20.9" fill="none" stroke="#333E48" stroke-width="1.1909" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="7.5" height="13.3"/>
                             </svg>
@@ -115,8 +116,8 @@
                         <a href="{{ path('cv') }}" title="Aller à la page cv">
                             <svg id="cv" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45">
                                 <circle fill="#333E48" cx="21" cy="22" r="20.6"/>
-                                <circle class="circle-icon" fill="#00AFAA" cx="22.2" cy="20.9" r="20.6"/>
-                                <path class="content-icon" fill="#BDBBBB" stroke="#333E48" stroke-width="1.9484" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                                <circle class="circle-icon{{ is_subpath('cv') ? '-active' }}" fill="#00AFAA" cx="22.2" cy="20.9" r="20.6"/>
+                                <path class="content-icon{{ is_subpath('cv') ? '-active' }}" fill="#BDBBBB" stroke="#333E48" stroke-width="1.9484" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
                                     M30.7,23.9h-5.9v-1.5c2.3-1.2,4-3.6,4.5-6.5c0.1,0.2,0.3,0.3,0.5,0.3c0.5,0,0.9-0.8,0.9-1.8s-0.4-1.8-0.9-1.8
                                     c-0.1,0-0.3,0.1-0.4,0.2c-0.6-4.4-4-7.9-8.2-7.9s-7.5,3.6-8,8c-0.1,0-0.2-0.1-0.4-0.1c-0.5,0-0.9,0.8-0.9,1.8s0.4,1.8,0.9,1.8
                                     c0.2,0,0.3-0.1,0.5-0.3c0.5,2.9,2.2,5.2,4.5,6.5V24h-4.7c-1.9,0-3.5,1.6-3.5,3.5V34h3.1l0.4-1.8l0.6,1.8H29l0.6-1.8l0.6,1.8h4.1
@@ -129,8 +130,8 @@
                         <a href="{{ path('portfolio') }}" title="Aller à la page portfolio">
                             <svg id="portfolio" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45">
                                 <circle display="inline" fill="#333E48" cx="21" cy="22" r="20.6"/>
-                                <circle class="circle-icon" display="inline" fill="#00AFAA" cx="22.2" cy="20.9" r="20.6"/>
-                                <polygon class="content-icon" fill="#BDBBBB" stroke="#333E48" stroke-width="1.9484" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+                                <circle class="circle-icon{{ is_subpath('portfolio') ? '-active' }}" display="inline" fill="#00AFAA" cx="22.2" cy="20.9" r="20.6"/>
+                                <polygon class="content-icon{{ is_subpath('portfolio') ? '-active' }}" fill="#BDBBBB" stroke="#333E48" stroke-width="1.9484" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
                                     8,10.7 19.4,34.4 38,27.2 25.2,8.5"/>
                                 <path fill="none" stroke="#333E48" stroke-width="1.1909" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
                                     M25.2,22.9l-0.7,2.9l-5.7-2.2l-3-5.8c0,0-2.9-5,1.4-5.7s7.9-1.4,10,3.6s0,5,1.4,7.9"/>
@@ -143,8 +144,8 @@
                         <a href="{{ path('contact') }}" title="Aller à la page contact">
                             <svg id="contact" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45">
                                 <circle fill="#333E48" cx="21" cy="22" r="20.6"/>
-                                <circle class="circle-icon" fill="#00AFAA" cx="22.2" cy="20.9" r="20.6"/>
-                                <path class="content-icon" fill="#BDBBBB" stroke="#333E48" stroke-width="1.9484" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                                <circle class="circle-icon{{ is_subpath('contact') ? '-active' }}" fill="#00AFAA" cx="22.2" cy="20.9" r="20.6"/>
+                                <path class="content-icon{{ is_subpath('contact') ? '-active' }}" fill="#BDBBBB" stroke="#333E48" stroke-width="1.9484" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
                                     M36,29.9L8.1,30.2c-0.4,0-0.8-0.3-0.8-0.8L7.1,9.8C7.1,9.4,7.4,9,7.9,9l27.9-0.3c0.4,0,0.8,0.3,0.8,0.8l0.2,19.6 C36.8,29.5,36.4,29.9,36,29.9z"/>
                                 <path fill="none" stroke="#333E48" stroke-width="1.1909" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.2,9.3l4.1,7.3l21.3-0.3l3.7-7.4c0,0-0.2-0.2-0.6-0.2L7.8,9C7.6,9,7.3,9.2,7.2,9.3z"/>
                             </svg>

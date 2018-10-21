@@ -30,4 +30,11 @@ class PortfolioTable extends Table
             ->where("p.type_id = $id");
     }
 
+    public function findImage(int $id): QueryBuilder
+    {
+        return $this->makeQuery()
+            ->select('image')
+            ->where("id = $id");
+    }
+
 }
