@@ -4,17 +4,23 @@
 
     <h1>Mon compte</h1>
 
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         {{ csrf_input() }}
 
         <div class="row">
-            <div class="col-md-6">
                 {% if user.avatar %}
-                    <img src="{{ user.avatar }}" style="width: 100%;">
+                    <div class="col-md-3">
+                        <img src="{{ asset(user.thumb) }}" alt="votre avatar" style="width: 50%;">
+                    </div>
+                    <div class="col-md-3">
+                        {{ field('avatar', user.avatar, "Changer d'avatar :", {type: 'file'}) }}
+                    </div>
+                {% else %}
+                    <div class="col-md-6">
+                        {{ field('avatar', user.avatar, "Changer d'avatar :", {type: 'file'}) }}
+                    </div>
                 {% endif %}
-                {{ field('avatar', user.avatar, "Votre avatar :") }}
 
-            </div>
             <div class="col-md-6">
                 {{ field('username', user.username, "Votre pseudo :") }}
             </div>
@@ -22,10 +28,10 @@
 
         <div class="row">
             <div class="col-md-6">
-                {{ field('firstname', user.firstname, "Votre prénom :") }}
+                {{ field('first_name', user.firstname, "Votre prénom :") }}
             </div>
             <div class="col-md-6">
-                {{ field('lastname', user.lastname, "Votre nom :") }}
+                {{ field('last_name', user.lastname, "Votre nom :") }}
             </div>
         </div>
 

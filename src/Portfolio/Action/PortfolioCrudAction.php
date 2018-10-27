@@ -107,7 +107,8 @@ class PortfolioCrudAction extends CrudAction
         $item = $this->table->find($id);
 
         ['filename' => $filename, 'extension' => $extension] = pathinfo($item->getimage());
-        $item->thumb = 'uploads' . DIRECTORY_SEPARATOR . 'portfolio' . DIRECTORY_SEPARATOR . $filename .'_thumb.' . $extension;
+        $item->thumb =
+            'uploads' . DIRECTORY_SEPARATOR . 'portfolio' . DIRECTORY_SEPARATOR . $filename .'_thumb.' . $extension;
 
         if ($request->getMethod() === 'POST') {
             $validator = $this->getValidator($request);
@@ -173,7 +174,7 @@ class PortfolioCrudAction extends CrudAction
             ->textLength('p_slug', 2, 50)
             ->exists('type_id', $this->typeTable->getTable(), $this->typeTable->getPdo())
             ->exists('user_id', $this->userTable->getTable(), $this->userTable->getPdo())
-            ->extension('image', ['jpg', 'png'])
+            ->extension('image', ['jpg', 'png', 'gif'])
             ->isSlug('p_slug');
         // TODO ->fileSize('max_file_size', 2) en Mo
 

@@ -1,14 +1,9 @@
 document.addEventListener("DOMContentLoaded", function(){
 
+    // Generate new quote
     let link = document.querySelector('#new-quote');
     let actualQuote = document.querySelector('#display-quote');
 
-    let API_KEY = "7cdad1875c5955549d7df72ef2bd6179";
-    let weather, wind;
-    /* test
-    let weather =  702;
-    let wind = 20;
-    */
     if(link){
         link.addEventListener('click', function (e) {
             e.preventDefault();
@@ -31,35 +26,45 @@ document.addEventListener("DOMContentLoaded", function(){
         });
     }
 
+    // Modal
     let modal = document.getElementById('modal');
-    let modalImg = document.getElementById("modalImg");
-    let modalTitle = document.getElementById("modalTitle");
-    let modalDesc = document.getElementById("modalDesc");
+    if(modal)
+    {
+        let modalImg = document.getElementById("modalImg");
+        let modalTitle = document.getElementById("modalTitle");
+        let modalDesc = document.getElementById("modalDesc");
 
-    let works = document.getElementsByClassName('work');
+        let works = document.getElementsByClassName('work');
 
-    for (let i = 0; i < works.length; i++) {
-        let img = works[i];
-        img.onclick = function() {
-            modal.style.display = "block";
-            let i = img.childNodes[1].childNodes[1];
-            let t = img.childNodes[3].childNodes[1];
-            let d = img.childNodes[3].childNodes[3];
-            modalImg.src = i.src.replace('_thumb', '');
-            modalTitle.innerHTML = t.innerHTML;
-            modalDesc.innerHTML = d.innerHTML;
+        for (let i = 0; i < works.length; i++) {
+            let img = works[i];
+            img.onclick = function() {
+                modal.style.display = "block";
+                let i = img.childNodes[1].childNodes[1];
+                let t = img.childNodes[3].childNodes[1];
+                let d = img.childNodes[3].childNodes[3];
+                modalImg.src = i.src.replace('_thumb', '');
+                modalTitle.innerHTML = t.innerHTML;
+                modalDesc.innerHTML = d.innerHTML;
+            }
         }
+
+        let span = document.getElementsByClassName("close")[0];
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        };
+
+        modal.onclick = function () {
+            modal.style.display = "none";
+        };
     }
 
-    let span = document.getElementsByClassName("close")[0];
+    // Get and generate meteo
 
-    span.onclick = function() {
-        modal.style.display = "none";
-    };
+    let API_KEY = "7cdad1875c5955549d7df72ef2bd6179";
+    let weather, wind;
 
-    modal.onclick = function () {
-        modal.style.display = "none";
-    };
     function build_url(city, countryCode){
 
         return "http://api.openweathermap.org/data/2.5/weather"
@@ -213,7 +218,6 @@ document.addEventListener("DOMContentLoaded", function(){
             while(i--){
                 let light = this.lightning[i];
 
-
                 light.path.push({
                     x: light.path[light.path.length-1].x + (this.rand(0, light.xRange)-(light.xRange/2)),
                     y: light.path[light.path.length-1].y + (this.rand(0, light.yRange))
@@ -234,19 +238,19 @@ document.addEventListener("DOMContentLoaded", function(){
 
                 this.ctx.strokeStyle = 'hsla(0, 100%, 100%, '+this.rand(10, 100)/100+')';
                 this.ctx.lineWidth = 1;
-                if(this.rand(0, 30) == 0){
+                if(this.rand(0, 30) === 0){
                     this.ctx.lineWidth = 2;
                 }
-                if(this.rand(0, 60) == 0){
+                if(this.rand(0, 60) === 0){
                     this.ctx.lineWidth = 3;
                 }
-                if(this.rand(0, 90) == 0){
+                if(this.rand(0, 90) === 0){
                     this.ctx.lineWidth = 4;
                 }
-                if(this.rand(0, 120) == 0){
+                if(this.rand(0, 120) === 0){
                     this.ctx.lineWidth = 5;
                 }
-                if(this.rand(0, 150) == 0){
+                if(this.rand(0, 150) === 0){
                     this.ctx.lineWidth = 6;
                 }
 
@@ -259,7 +263,7 @@ document.addEventListener("DOMContentLoaded", function(){
                     this.ctx.lineTo(light.path[pc].x, light.path[pc].y);
 
                     if(light.canSpawn){
-                        if(this.rand(0, 100) == 0){
+                        if(this.rand(0, 100) === 0){
                             light.canSpawn = false;
                             this.createL(light.path[pc].x, light.path[pc].y, false);
                         }
@@ -271,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function(){
                     this.ctx.fillRect(0, 0, this.cw, this.ch);
                 }
 
-                if(this.rand(0, 30) == 0){
+                if(this.rand(0, 30) === 0){
                     this.ctx.fillStyle = 'rgba(255, 255, 255, '+this.rand(1, 3)/100+')';
                     this.ctx.fillRect(0, 0, this.cw, this.ch);
                 }
@@ -334,7 +338,7 @@ document.addEventListener("DOMContentLoaded", function(){
         for(let x = 0; x < vendors.length && !window.requestAnimationFrame; ++x){
             window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
             window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
-        };
+        }
 
         if(!window.requestAnimationFrame){
             window.requestAnimationFrame = function(callback, element){
@@ -344,15 +348,16 @@ document.addEventListener("DOMContentLoaded", function(){
                 lastTime = currTime + timeToCall;
                 return id;
             };
-        };
+        }
 
         if (!window.cancelAnimationFrame){
             window.cancelAnimationFrame = function(id){
                 clearTimeout(id);
             };
-        };
+        }
     };
 
+    // Scroll
     function scrollTo(element, duration) {
         let e = document.documentElement;
         if(e.scrollTop===0){

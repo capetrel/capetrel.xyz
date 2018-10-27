@@ -3,7 +3,7 @@
 {% block title "Administrer les pages" %}
 
 {% block body %}
-    <h1>Administration du site</h1>
+    <h1>Administration du contenu des pages</h1>
 
     <p class="text-right">
         <a class="btn btn-primary" href="{{ path(routePrefix ~'.create') }}">
@@ -29,7 +29,7 @@
                 <td>{{ item.moduleName }}</td>
                 <td>{{ item.title }}</td>
                 <td>{{ item.menuTitle }}</td>
-                <td>{{ item.content }}</td>
+                <td>{{ item.content|raw }}</td>
                 <td>
                     <a href="{{ path(routePrefix ~'.edit', {id: item.id}) }}" class="btn btn-primary">Éditer</a>
                     <form style="display: inline" action="{{ path(routePrefix ~'.delete', {id: item.id}) }}" method="post" onsubmit="return confirm('êtes vous sur ?')">

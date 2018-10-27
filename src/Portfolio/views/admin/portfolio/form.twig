@@ -16,7 +16,7 @@
 <div class="row">
     <div class="col-md-6">
         {% if item.image is not empty %}
-            <img src="{{ asset(item.thumb) }}" style="width: 30%;">
+            <img src="{{ asset(item.thumb) }}" alt="{{ item.pTitle }}" style="width: 30%;">
         {% endif %}
     </div>
     <div class="col-md-6">

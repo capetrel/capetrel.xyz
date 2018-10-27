@@ -10,7 +10,6 @@ class Upload
 
     protected $formats = [];
 
-
     public function __construct(?string $path = null)
     {
         if ($path) {

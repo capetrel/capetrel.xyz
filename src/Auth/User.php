@@ -71,6 +71,11 @@ class User implements UserInterface
     /**
      * @var string
      */
+    public $avatar;
+
+    /**
+     * @var string
+     */
     public $passwordReset;
 
     /**
@@ -250,6 +255,37 @@ class User implements UserInterface
     public function getRoles(): array
     {
         return [$this->role];
+    }
+
+    /**
+     * @return string
+     */
+    public function getAvatar(): ?string
+    {
+        return
+            'uploads' . DIRECTORY_SEPARATOR .
+            'avatar' . DIRECTORY_SEPARATOR .
+            $this->avatar;
+    }
+
+    /**
+     * @param string $avatar
+     */
+    public function setAvatar(?string $avatar): void
+    {
+        $this->avatar = $avatar;
+    }
+
+    public function getThumb(): ?string
+    {
+        if ($this->avatar === null) {
+            return null;
+        }
+        ['filename' => $filename, 'extension' => $extension] = pathinfo($this->avatar);
+        return
+            'uploads' . DIRECTORY_SEPARATOR .
+            'avatar' . DIRECTORY_SEPARATOR .
+            $filename .'_thumb.' . $extension;
     }
 
     /**

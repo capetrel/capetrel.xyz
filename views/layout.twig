@@ -153,11 +153,11 @@
                     </div>
 
                     <div class="menu-item">
-                        <a href="#" title="Aller à la page divertissement">
+                        <a href="{{ path('game') }}" title="Aller à la page divertissement">
                             <svg id="game" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45">
                                 <circle fill="#333E48" cx="21" cy="22" r="20.6"/>
-                                <circle class="circle-icon" fill="#00AFAA" cx="22.2" cy="20.9" r="20.6"/>
-                                <path class="content-icon" fill="#BDBBBB" stroke="#333E48" stroke-width="1.9484" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                                <circle class="circle-icon{{ is_subpath('game') ? '-active' }}" fill="#00AFAA" cx="22.2" cy="20.9" r="20.6"/>
+                                <path class="content-icon{{ is_subpath('game') ? '-active' }}" fill="#BDBBBB" stroke="#333E48" stroke-width="1.9484" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
                                     M26.6,8.4c2.6-1.8,5.8-0.7,7.4,2.5s0.9,7.2-1.6,8.9c-1.4,1-3.1,1.2-4.6,0.4c-1.2,0.8-2.6,1.7-4,2.7s-2.8,2-3.9,3
                                     c-0.1,1.8-1,3.5-2.5,4.6c-2.5,1.8-5.9,0.7-7.5-2.4s-0.9-7.2,1.6-8.9l0.3-0.2l0.7-0.4c0,0,11.6-8.2,12.5-8.8S25.8,9,26.6,8.4z"/>
                                 <path fill="#333E48" d="M16.5,24.1l-0.8-1.6l-1.3,0.9l-0.8-1.5l-1.4,1l0.7,1.6l-1.3,0.9l0.9,1.6l1.3-0.9l0.8,1.5l1.4-1l-0.8-1.5

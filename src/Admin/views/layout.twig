@@ -16,9 +16,10 @@
     <link rel="manifest" href="{{ asset('img/favicons/site.webmanifest') }}">
     <link rel="mask-icon" href="{{ asset('img/favicons/safari-pinned-tab.svg') }}" color="#5bbad5">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.5.1/flatpickr.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/open-iconic-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/flatpickr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('js/trumbowyg/ui/trumbowyg.min.css') }}">
 
     <title>{% block title "Monsite" %}</title>
 </head>
@@ -34,15 +35,22 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-link">
-                <a class="nav-item" href="/" target="_blank">front</a>
+                <a class="nav-item" href="/" target="_blank">Voir le site</a>
             </li>
             {{ admin_menu() }}
         </ul>
         <div class="navbar-nav">
+        {% if current_user() %}
+            <div class="navbar-text">{{ current_user().username }} est connecté&nbsp;&nbsp;</div>
             <form class="nav-item" method="post" action="{{ path('auth.logout') }}">
                 {{ csrf_input() }}
                 <button class="btn btn-secondary">Se déconnecter</button>
             </form>
+        {% else %}
+            <li class="nav-item active">
+                <a class="nav-link btn btn-secondary" href="{{ path('auth.login') }}">Se connecter</a>
+            </li>
+        {% endif %}
         </div>
     </div>
 </nav>
@@ -65,10 +73,11 @@
 
 </main>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.5.1/flatpickr.js"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/flatpickr.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/trumbowyg/trumbowyg.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/trumbowyg/langs/fr.min.js') }}"></script>
 <script>
     flatpickr('.datepicker', {
         enableTime: true,
@@ -83,6 +92,26 @@
         altFormat: 'j F Y',
         dateFormat: 'Y-m-d H:i:S'
     });
+    $(document).ready(function(){
+        $('#content').trumbowyg({
+            btns: [
+                ['viewHTML'],
+                ['undo', 'redo'], // Only supported in Blink browsers
+                ['formatting'],
+                ['strong', 'em', 'del'],
+                ['superscript', 'subscript'],
+                ['link'],
+                ['insertImage'],
+                ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+                ['unorderedList', 'orderedList'],
+                ['horizontalRule'],
+                ['removeformat'],
+                ['fullscreen']
+            ],
+            autogrow: true,
+            lang: 'fr'
+        });
+    })
 </script>
 </body>
 </html>

@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">{{ users }}</h4>
-            <p class="card-text">Utilisateur{% if count > 1 %}s{% endif %}</p>
+            <p class="card-text">Utilisateur{% if users > 1 %}s{% endif %}</p>
             <a class="btn btn-primary" href="{{ path('account') }}">Gérer</a>
             <a class="btn btn-secondary" href="{{ path('account.signup') }}">Ajouter</a>
         </div>

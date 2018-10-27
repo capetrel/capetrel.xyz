@@ -18,7 +18,7 @@ class CvModule extends Module
 
     const SEEDS = __DIR__.'/db/seeds';
 
-    const NAME = 'cv';
+    public const NAME = 'cv';
 
     public function __construct(ContainerInterface $container)
     {

@@ -1,6 +1,7 @@
-<li class="nav-item">
-    <a class="nav-link {{ is_subpath('cv.admin.index') ? 'active' }}" href="{{ path('cv.admin.index') }}">C.V.</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link {{ is_subpath('cv.category.admin.index') ? 'active' }}" href="{{ path('cv.category.admin.index') }}">Catégories</a>
+<li class="nav-item dropdown {{ is_subpath('cv.admin.index') or is_subpath('cv.category.admin.index') ? 'active' }}">
+    <a class="nav-link dropdown-toggle" href="#" id="dropdownC" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">C.V.</a>
+    <div class="dropdown-menu" aria-labelledby="dropdownC">
+        <a class="dropdown-item {{ is_subpath('cv.admin.index') ? 'active' }}" href="{{ path('cv.admin.index') }}">C.V.</a>
+        <a class="dropdown-item {{ is_subpath('cv.category.admin.index') ? 'active' }}" href="{{ path('cv.category.admin.index') }}">Catégories</a>
+    </div>
 </li>

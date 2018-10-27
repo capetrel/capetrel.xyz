@@ -295,15 +295,29 @@ blockquote cite{
 .portfolio{
     margin: 1rem;
     width: 70vw;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -ms-flex-pack: distribute;
     justify-content: space-around;
+    -webkit-box-align: baseline;
+    -ms-flex-align: baseline;
     align-items: baseline;
 }
 
 .gallery{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
 }
 
@@ -335,6 +349,8 @@ blockquote cite{
     color: #f1f1f1;
     font-size: 40px;
     font-weight: bold;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
     transition: 0.3s;
 }
 
@@ -356,13 +372,20 @@ blockquote cite{
 }
 
 .modal-content, #modalDesc, #modalTitle {
+    -webkit-animation-name: zoom;
     animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
     animation-duration: 0.6s;
 }
 
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0);transform:scale(0)}
+    to {-webkit-transform:scale(1);transform:scale(1)}
+}
+
 @keyframes zoom {
-    from {transform:scale(0)}
-    to {transform:scale(1)}
+    from {-webkit-transform:scale(0);transform:scale(0)}
+    to {-webkit-transform:scale(1);transform:scale(1)}
 }
 
 @media only screen and (max-width: 700px){
@@ -378,8 +401,8 @@ blockquote cite{
 }
 
 .blackboard{
-    height: 60vh;
-    width: 59vw;
+    height: 40vh;
+    width: 45vw;
     background-color: #1a1a1a;
     border: solid 5px #c3996d;
     margin-top: 20px;
@@ -389,8 +412,15 @@ blockquote cite{
 }
 
 .board-container{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
@@ -416,6 +446,8 @@ blockquote cite{
     font-size: 1em;
     line-height: 1.5;
     color: #f4f4f4;
+    -webkit-border-image: url(../img/input-border.svg) calc(40 / 108 * 100%) calc(1 / 10* 100%) / 0 0 4 4;
+    -o-border-image: url(../img/input-border.svg) calc(40 / 108 * 100%) calc(1 / 10* 100%) / 0 0 4 4;
     border-image: url(../img/input-border.svg) calc(40 / 108 * 100%) calc(1 / 10* 100%) / 0 0 4 4;
     border-radius: 0;
     background: none;
@@ -443,19 +475,35 @@ blockquote cite{
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
     flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
 
 .logo-box{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
 .dev-logo{
     height: 9vh;
     margin-top: 2vh;
+    margin-right: 1vw;
+    margin-bottom: 1vh;
+}
+
+.rating{
+    margin-right: 1vw;
 }
 
 .rating-static {
@@ -476,8 +524,8 @@ blockquote cite{
 .rating-9 { background-position: 0 0; }
 
 .portfolio-categories{
-     list-style: none;
- }
+    list-style: none;
+}
 
 .portfolio-categories > li{
     width: 4vh;
@@ -551,6 +599,8 @@ blockquote cite{
     filter: alpha(opacity=0);
     opacity: 1;
     visibility: visible;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
     transition: all 0.2s;
 }
 
@@ -824,19 +874,19 @@ select.form-control:focus::-ms-value {
 .ih-item {
     position: relative;
     -webkit-transition: all 0.35s ease-in-out;
-    -moz-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
     transition: all 0.35s ease-in-out;
 }
 
 .ih-item,
 .ih-item * {
     -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 .ih-item a {
     color: #333;
+    cursor: pointer;
 }
 
 .ih-item a:hover {
@@ -854,6 +904,7 @@ select.form-control:focus::-ms-value {
     height: 200px;
     margin-bottom: 1rem;
     border: 8px solid #f4f4f4;
+    -webkit-box-shadow: 1px 1px 3px rgba(99, 188, 186, 0.3);
     box-shadow: 1px 1px 3px rgba(99, 188, 186, 0.3);
 }
 .ih-item.square .info {
@@ -879,12 +930,10 @@ select.form-control:focus::-ms-value {
 }
 .ih-item.square.effect6 .img {
     -webkit-transition: all 0.35s ease-in-out;
-    -moz-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
     transition: all 0.35s ease-in-out;
     -webkit-transform: scale(1);
-    -moz-transform: scale(1);
     -ms-transform: scale(1);
-    -o-transform: scale(1);
     transform: scale(1);
 }
 .ih-item.square.effect6 .info {
@@ -893,7 +942,7 @@ select.form-control:focus::-ms-value {
     visibility: hidden;
     opacity: 0;
     -webkit-transition: all 0.35s ease-in-out;
-    -moz-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
     transition: all 0.35s ease-in-out;
 }
 .ih-item.square.effect6 .info h3 {
@@ -905,7 +954,7 @@ select.form-control:focus::-ms-value {
     background: #00afaa;
     margin: 30px 0 0 0;
     -webkit-transition: all 0.35s ease-in-out;
-    -moz-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
     transition: all 0.35s ease-in-out;
 }
 .ih-item.square.effect6 .info .portfolio-desc {
@@ -917,14 +966,12 @@ select.form-control:focus::-ms-value {
     padding: 5px 5px 5px;
     text-align: center;
     -webkit-transition: all 0.35s 0.1s linear;
-    -moz-transition: all 0.35s 0.1s linear;
+    -o-transition: all 0.35s 0.1s linear;
     transition: all 0.35s 0.1s linear;
 }
 .ih-item.square.effect6 a:hover .img {
     -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
     -ms-transform: scale(1.2);
-    -o-transform: scale(1.2);
     transform: scale(1.2);
 }
 .ih-item.square.effect6 a:hover .info {
@@ -934,93 +981,69 @@ select.form-control:focus::-ms-value {
 
 .ih-item.square.effect6.from_top_and_bottom .info h3 {
     -webkit-transform: translateY(-100%);
-    -moz-transform: translateY(-100%);
     -ms-transform: translateY(-100%);
-    -o-transform: translateY(-100%);
     transform: translateY(-100%);
 }
 .ih-item.square.effect6.from_top_and_bottom .info p {
     -webkit-transform: translateY(100%);
-    -moz-transform: translateY(100%);
     -ms-transform: translateY(100%);
-    -o-transform: translateY(100%);
     transform: translateY(100%);
 }
 .ih-item.square.effect6.from_top_and_bottom a:hover .info h3,
 .ih-item.square.effect6.from_top_and_bottom a:hover .info p {
     -webkit-transform: translateY(0);
-    -moz-transform: translateY(0);
     -ms-transform: translateY(0);
-    -o-transform: translateY(0);
     transform: translateY(0);
 }
 
 .ih-item.square.effect6.from_left_and_right .info h3 {
     -webkit-transform: translateX(-100%);
-    -moz-transform: translateX(-100%);
     -ms-transform: translateX(-100%);
-    -o-transform: translateX(-100%);
     transform: translateX(-100%);
 }
 .ih-item.square.effect6.from_left_and_right .info p {
     -webkit-transform: translateX(100%);
-    -moz-transform: translateX(100%);
     -ms-transform: translateX(100%);
-    -o-transform: translateX(100%);
     transform: translateX(100%);
 }
 .ih-item.square.effect6.from_left_and_right a:hover .info h3,
 .ih-item.square.effect6.from_left_and_right a:hover .info p {
     -webkit-transform: translateX(0);
-    -moz-transform: translateX(0);
     -ms-transform: translateX(0);
-    -o-transform: translateX(0);
     transform: translateX(0);
 }
 
 .ih-item.square.effect6.top_to_bottom .info h3 {
     -webkit-transform: translateY(-100%);
-    -moz-transform: translateY(-100%);
     -ms-transform: translateY(-100%);
-    -o-transform: translateY(-100%);
     transform: translateY(-100%);
 }
 .ih-item.square.effect6.top_to_bottom .info p {
     -webkit-transform: translateY(-100%);
-    -moz-transform: translateY(-100%);
     -ms-transform: translateY(-100%);
-    -o-transform: translateY(-100%);
     transform: translateY(-100%);
 }
 .ih-item.square.effect6.top_to_bottom a:hover .info h3,
 .ih-item.square.effect6.top_to_bottom a:hover .info p {
     -webkit-transform: translateY(0);
-    -moz-transform: translateY(0);
     -ms-transform: translateY(0);
-    -o-transform: translateY(0);
     transform: translateY(0);
 }
 
 .ih-item.square.effect6.bottom_to_top .info h3 {
     -webkit-transform: translateY(100%);
-    -moz-transform: translateY(100%);
     -ms-transform: translateY(100%);
-    -o-transform: translateY(100%);
     transform: translateY(100%);
 }
 .ih-item.square.effect6.bottom_to_top .info p {
     -webkit-transform: translateY(100%);
-    -moz-transform: translateY(100%);
     -ms-transform: translateY(100%);
-    -o-transform: translateY(100%);
     transform: translateY(100%);
 }
 .ih-item.square.effect6.bottom_to_top a:hover .info h3,
 .ih-item.square.effect6.bottom_to_top a:hover .info p {
     -webkit-transform: translateY(0);
-    -moz-transform: translateY(0);
     -ms-transform: translateY(0);
-    -o-transform: translateY(0);
     transform: translateY(0);
 }
 /****************************************************************************/
@@ -1029,10 +1052,15 @@ select.form-control:focus::-ms-value {
 @media screen and (max-width: 380px) {
 
     .gallery {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
     }
 
     .portfolio-categories{
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
         display: inline-flex;
     }
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Game\GameModule;
 use App\Home\Action\HomeAction;
 use Framework\App;
 use App\Admin\AdminModule;
@@ -34,7 +35,8 @@ $app = (new App(['config/config.php', 'config.php']))
     ->addModule(HomeModule::class)
     ->addModule(CvModule::class)
     ->addModule(PortfolioModule::class)
-    ->addModule(ContactModule::class);
+    ->addModule(ContactModule::class)
+    ->addModule(GameModule::class);
 
 $container = $app->getContainer();
 

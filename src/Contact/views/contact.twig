@@ -12,18 +12,10 @@
             {{ field('message', null, 'Votre message', {type: 'textarea'}) }}
             <button class="btn btn-primary right">Envoyer</button>
         </form>
-        <!--
-        <svg class="foot-blackboard" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 574 61">
-            <polygon fill="#676767" points="563,0 563,20 11,20 11,0 0,0 0,61 11,61 11,30 563,30 563,61 574,61 574,0 "/>
-        </svg>
-        -->
     </div>
 
     <h1>{{page.title}}</h1>
 
-    <p>
         {{ page.content }}
-    </p>
-
 
 {% endblock %}
