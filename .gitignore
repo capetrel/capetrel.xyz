@@ -5,6 +5,10 @@ composer.lock
 memory
 /config.php
 /tmp
-/public/uploads
+/public/uploads/avatar/*
+/public/uploads/portfolio/*
+/public/uploads/posts/*
+/public/uploads/skills/*
+/public/uploads/skills/logos/*
 /public/js/weather-info
 /downloads
