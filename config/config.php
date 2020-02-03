@@ -4,6 +4,7 @@
  * précise l'emplacement des vues et les classes à injecter en dépendences.
  */
 
+use App\Framework\Twig\MinifyExtension;
 use Framework\Router;
 use App\Framework\Middleware\CsrfMiddleware;
 use App\Framework\Renderer\RendererInterface;
@@ -43,6 +44,7 @@ return[
         get(CsrfExtension::class),
         get(ModuleExtension::class),
         get(PriceExtension::class),
+        get(MinifyExtension::class),
     ],
     SessionInterface::class => autowire(PhpSession::class),
     CsrfMiddleware::class => autowire()->constructor(get(SessionInterface::class)),

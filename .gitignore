@@ -1,4 +1,5 @@
 .idea
+.well-known
 vendor
 composer.lock
 memory
